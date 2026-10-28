@@ -27,10 +27,6 @@ export async function exportCardsZip(cards: CardData[], onProgress?: (pct: numbe
   </defs>
   <rect width="750" height="1050" fill="url(#bg)" rx="30"/>
   <rect x="20" y="20" width="710" height="1010" fill="none" stroke="#f59e0b" stroke-width="8" rx="20"/>
-  <circle cx="45" cy="45" r="12" fill="#d97706"/>
-  <circle cx="705" cy="45" r="12" fill="#d97706"/>
-  <circle cx="45" cy="1005" r="12" fill="#d97706"/>
-  <circle cx="705" cy="1005" r="12" fill="#d97706"/>
   
   <text x="50" y="90" font-family="monospace" font-size="28" font-weight="bold" fill="#f59e0b">${card.deck.toUpperCase()}</text>
   <text x="700" y="90" text-anchor="end" font-family="monospace" font-size="28" font-weight="bold" fill="#fef08a">${card.id}</text>
