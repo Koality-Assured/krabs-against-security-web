@@ -121,3 +121,18 @@ export const DECK_CONFIG: Record<DeckType, DeckMetadata> = {
     defaultIcon: 'skull'
   }
 };
+
+export interface ScenarioData {
+  id: string;
+  title: string;
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced' | string;
+  briefing: string;
+  scenario_cards: {
+    initial_compromise: string;
+    pivot_escalate: string;
+    persistence: string;
+    c2_exfil: string;
+  };
+  recommended_injects: string[];
+  special_rules: string;
+}

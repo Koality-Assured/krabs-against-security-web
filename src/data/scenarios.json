@@ -1,0 +1,59 @@
+[
+  {
+    "id": "SCN-001",
+    "title": "The Sunday Lunch Rush Ransomware",
+    "difficulty": "Beginner",
+    "briefing": "Thirty minutes before the peak Sunday lunch rush, all POS terminals lock up displaying Red Snapper Ransomware. The attackers entered via an unpatched menu server, escalated using Pass-the-Kelp-Hash, established persistence via Barnacle Registry Run Keys, and encrypted point-of-sale databases. Defenders must isolate endpoints and recover from clean masters before the 10-strike doom clock expires.",
+    "scenario_cards": {
+      "initial_compromise": "IC-002",
+      "pivot_escalate": "PE-001",
+      "persistence": "P-001",
+      "c2_exfil": "C2-003"
+    },
+    "recommended_injects": [
+      "INJ-002",
+      "INJ-004",
+      "INJ-006",
+      "INJ-013"
+    ],
+    "special_rules": "Defenders begin with 1 strike already on the counter due to early customer complaints."
+  },
+  {
+    "id": "SCN-002",
+    "title": "The Scurvy Zero-Day Fryer",
+    "difficulty": "Intermediate",
+    "briefing": "An urgent promotional email with macro chum infected an executive laptop, followed by LOLBins lateral movement, a sneaky Deep Trench PHP web shell in the ordering portal, and covert data exfiltration via Barnacle DNS Tunneling. Plankton is quietly stealing the Secret Formula without triggering noisy alerts.",
+    "scenario_cards": {
+      "initial_compromise": "IC-001",
+      "pivot_escalate": "PE-002",
+      "persistence": "P-002",
+      "c2_exfil": "C2-001"
+    },
+    "recommended_injects": [
+      "INJ-001",
+      "INJ-007",
+      "INJ-009",
+      "INJ-014"
+    ],
+    "special_rules": "Whenever a Network check fails, Plankton exfiltrates an additional chunk of the formula, adding 1 strike."
+  },
+  {
+    "id": "SCN-003",
+    "title": "The Deep-Sea Fiber Espionage",
+    "difficulty": "Advanced",
+    "briefing": "A microscopic physical intrusion through the floor drain allowed hardware taps on the server rack, followed by an Active Directory Trench Forest Compromise, a Golden Clam Kerberos Ticket granting permanent dominion, and physical subsea cable optical tapping. This is a tier-one state-sponsored undersea APT crisis.",
+    "scenario_cards": {
+      "initial_compromise": "IC-004",
+      "pivot_escalate": "PE-007",
+      "persistence": "P-004",
+      "c2_exfil": "C2-007"
+    },
+    "recommended_injects": [
+      "INJ-003",
+      "INJ-005",
+      "INJ-010",
+      "INJ-012"
+    ],
+    "special_rules": "Golden Clam persistence requires a successful Domain Credential Reset (PR-006, d20 14+) twice to fully eradicate."
+  }
+]

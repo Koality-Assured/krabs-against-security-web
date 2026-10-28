@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from 'react';
-import { CardData, DeckType } from '../types/card';
+import React, { useState, useMemo, useEffect } from 'react';
+import { CardData, DeckType, ScenarioData } from '../types/card';
+import scenariosData from '../data/scenarios.json';
 import { Card } from './Card';
 import { DiceRoller } from './DiceRoller';
 import { sound } from '../utils/audio';
@@ -16,7 +17,10 @@ import {
   ShieldCheck, 
   Trophy, 
   Skull,
-  BookOpen
+  BookOpen,
+  HelpCircle,
+  X,
+  Target
 } from 'lucide-react';
 
 interface TabletopBoardProps {
@@ -36,6 +40,8 @@ export const TabletopBoard: React.FC<TabletopBoardProps> = ({ allCards }) => {
   // Strikes counter (0 to 10)
   const [strikes, setStrikes] = useState<number>(0);
   const [facilitatorMode, setFacilitatorMode] = useState<boolean>(false);
+  const [selectedScenarioId, setSelectedScenarioId] = useState<string>('random');
+  const [showQuickRules, setShowQuickRules] = useState<boolean>(false);
   const [activeInjects, setActiveInjects] = useState<CardData[]>([]);
   const [selectedProcedure, setSelectedProcedure] = useState<CardData | null>(null);
   const [activeCheckTarget, setActiveCheckTarget] = useState<number>(11);
@@ -52,6 +58,11 @@ export const TabletopBoard: React.FC<TabletopBoardProps> = ({ allCards }) => {
   const procCards = useMemo(() => allCards.filter(c => c.deck === 'procedures'), [allCards]);
   const injCards = useMemo(() => allCards.filter(c => c.deck === 'injects'), [allCards]);
 
+  const activeScenarioMeta = useMemo(() => {
+    if (selectedScenarioId === 'random') return null;
+    return (scenariosData as ScenarioData[]).find(s => s.id === selectedScenarioId) || null;
+  }, [selectedScenarioId]);
+
   // Scenario slots (4 face-down attack vectors)
   const [scenario, setScenario] = useState<ScenarioSlot[]>(() => {
     return [
@@ -62,11 +73,49 @@ export const TabletopBoard: React.FC<TabletopBoardProps> = ({ allCards }) => {
     ];
   });
 
+  // Load a preset scenario or randomize
+  const loadScenario = (scenarioId: string) => {
+    if (scenarioId === 'random') {
+      setSelectedScenarioId('random');
+      dealNewScenario();
+      return;
+    }
+
+    const preset = (scenariosData as ScenarioData[]).find(s => s.id === scenarioId);
+    if (!preset) return;
+
+    sound.playCardFlip();
+    setSelectedScenarioId(scenarioId);
+
+    const ic = icCards.find(c => c.id === preset.scenario_cards.initial_compromise) || icCards[0];
+    const pe = peCards.find(c => c.id === preset.scenario_cards.pivot_escalate) || peCards[0];
+    const p = pCards.find(c => c.id === preset.scenario_cards.persistence) || pCards[0];
+    const c2 = c2Cards.find(c => c.id === preset.scenario_cards.c2_exfil) || c2Cards[0];
+
+    setScenario([
+      { deck: 'initial_compromise', title: '1. Initial Compromise', card: ic, revealed: false, contained: false },
+      { deck: 'pivot_escalate', title: '2. Pivot & Escalate', card: pe, revealed: false, contained: false },
+      { deck: 'persistence', title: '3. Persistence', card: p, revealed: false, contained: false },
+      { deck: 'c2_exfil', title: '4. C2 & Exfiltration', card: c2, revealed: false, contained: false },
+    ]);
+
+    const initialStrikes = preset.special_rules.includes('begin with 1 strike') ? 1 : 0;
+    setStrikes(initialStrikes);
+    setActiveInjects([]);
+    setLogMessages([
+      `CAMPAIGN SCENARIO LOADED: [${preset.id}] ${preset.title} (${preset.difficulty})`,
+      `BRIEFING: ${preset.briefing}`,
+      `SPECIAL RULES: ${preset.special_rules}`,
+      "Defenders: Choose an investigative procedure and roll d20 to detect/contain."
+    ]);
+  };
+
   // Deal random new scenario
   const dealNewScenario = () => {
     if (icCards.length === 0) return;
 
     sound.playCardFlip();
+    setSelectedScenarioId('random');
     const getRandom = (arr: CardData[]) => arr[Math.floor(Math.random() * arr.length)];
 
     setScenario([
@@ -79,17 +128,37 @@ export const TabletopBoard: React.FC<TabletopBoardProps> = ({ allCards }) => {
     setStrikes(0);
     setActiveInjects([]);
     setLogMessages([
-      "New incident scenario generated. 4 breach vectors armed face-down.",
+      "Random incident scenario generated. 4 breach vectors armed face-down.",
       "Defenders: Choose a defensive procedure and roll d20 to investigate."
     ]);
   };
 
   // Initialize on first mount if not armed
-  React.useEffect(() => {
+  useEffect(() => {
     if (scenario[0].card === null && icCards.length > 0) {
       dealNewScenario();
     }
   }, [icCards]);
+
+  // Global keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement || e.target instanceof HTMLSelectElement) {
+        return;
+      }
+
+      if (e.key === 'f' || e.key === 'F') {
+        setFacilitatorMode(prev => !prev);
+      } else if (e.key === 'r' || e.key === 'R') {
+        dealNewScenario();
+      } else if (e.key === '?') {
+        setShowQuickRules(prev => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Toggle reveal state of a card slot
   const toggleReveal = (index: number) => {
@@ -214,6 +283,32 @@ export const TabletopBoard: React.FC<TabletopBoardProps> = ({ allCards }) => {
         </div>
 
         <div className="flex items-center gap-2 flex-wrap">
+          {/* Campaign Scenario Selector */}
+          <div className="flex items-center gap-1.5 bg-ocean-950 px-2.5 py-1.5 rounded-xl border border-amber-500/30">
+            <Target className="w-3.5 h-3.5 text-amber-400" />
+            <select
+              value={selectedScenarioId}
+              onChange={(e) => loadScenario(e.target.value)}
+              className="bg-transparent text-xs font-mono font-bold text-amber-200 outline-none cursor-pointer"
+            >
+              <option value="random" className="bg-ocean-950 text-slate-100">🎲 Random Incident</option>
+              {(scenariosData as ScenarioData[]).map(sc => (
+                <option key={sc.id} value={sc.id} className="bg-ocean-950 text-slate-100">
+                  📁 {sc.title} ({sc.difficulty})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Quick Rules Button */}
+          <button
+            onClick={() => setShowQuickRules(true)}
+            className="px-3 py-1.5 rounded-xl font-mono text-xs font-bold bg-ocean-950 text-sky-200 border border-sky-500/30 hover:bg-ocean-800 flex items-center gap-1.5 shadow"
+          >
+            <HelpCircle className="w-3.5 h-3.5 text-sky-400" />
+            Quick Rules
+          </button>
+
           {/* Facilitator Mode Toggle */}
           <button
             onClick={() => setFacilitatorMode(prev => !prev)}
@@ -227,6 +322,7 @@ export const TabletopBoard: React.FC<TabletopBoardProps> = ({ allCards }) => {
           <button
             onClick={dealNewScenario}
             className="px-3 py-1.5 rounded-xl font-mono text-xs font-bold bg-ocean-700 hover:bg-ocean-600 text-white border border-ocean-500/50 flex items-center gap-1.5 shadow"
+            title="Randomize new scenario (Shortcut: R)"
           >
             <Shuffle className="w-3.5 h-3.5 text-amber-300" />
             Deal New Breach
@@ -242,6 +338,44 @@ export const TabletopBoard: React.FC<TabletopBoardProps> = ({ allCards }) => {
           </button>
         </div>
       </div>
+
+      {/* Active Campaign Briefing Banner (if preset scenario is active) */}
+      {activeScenarioMeta && (
+        <div className="bg-gradient-to-r from-ocean-900/90 via-slate-900/90 to-ocean-900/90 border border-amber-500/30 rounded-2xl p-4 shadow-lg space-y-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xs px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold">
+                {activeScenarioMeta.id}
+              </span>
+              <h3 className="font-serif font-bold text-amber-100 text-sm">
+                {activeScenarioMeta.title}
+              </h3>
+              <span className={`text-[10px] font-mono px-2 py-0.5 rounded font-bold ${
+                activeScenarioMeta.difficulty === 'Beginner' ? 'bg-emerald-900/60 text-emerald-300 border border-emerald-500/40' :
+                activeScenarioMeta.difficulty === 'Intermediate' ? 'bg-amber-900/60 text-amber-300 border border-amber-500/40' :
+                'bg-red-900/60 text-red-300 border border-red-500/40'
+              }`}>
+                {activeScenarioMeta.difficulty}
+              </span>
+            </div>
+            <button
+              onClick={() => setSelectedScenarioId('random')}
+              className="text-slate-400 hover:text-slate-200 text-xs font-mono"
+            >
+              Switch to Random
+            </button>
+          </div>
+          <p className="font-serif text-xs text-slate-300 leading-relaxed">
+            {activeScenarioMeta.briefing}
+          </p>
+          {activeScenarioMeta.special_rules && (
+            <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl px-3 py-1.5 text-xs font-mono text-amber-200 flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
+              <span><strong>Special Rules:</strong> {activeScenarioMeta.special_rules}</span>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Win / Loss Banners */}
       {allNeutralized && (
@@ -536,6 +670,61 @@ export const TabletopBoard: React.FC<TabletopBoardProps> = ({ allCards }) => {
           </div>
         </div>
       </div>
+
+      {/* Quick Rules Modal */}
+      {showQuickRules && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fade-in">
+          <div className="bg-ocean-900 border-2 border-amber-500/50 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 shadow-2xl space-y-4">
+            <div className="flex justify-between items-center border-b border-amber-500/30 pb-3">
+              <div className="flex items-center gap-2">
+                <HelpCircle className="w-5 h-5 text-amber-400" />
+                <h3 className="font-serif font-bold text-lg text-amber-100">
+                  QUICK RULES &amp; GAMEPLAY OVERVIEW
+                </h3>
+              </div>
+              <button
+                onClick={() => setShowQuickRules(false)}
+                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-ocean-800 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="space-y-3 text-xs font-mono text-slate-200">
+              <div className="p-3 bg-ocean-950 rounded-xl border border-slate-800">
+                <span className="text-amber-300 font-bold block mb-1">1. The Secret Attack Chain (4 Slots)</span>
+                <p className="text-slate-300 leading-relaxed">
+                  Four attack cards are placed face-down: <strong className="text-red-400">Initial Compromise</strong>, <strong className="text-amber-400">Pivot &amp; Escalate</strong>, <strong className="text-purple-400">Persistence</strong>, and <strong className="text-yellow-600">C2 &amp; Exfiltration</strong>.
+                </p>
+              </div>
+
+              <div className="p-3 bg-ocean-950 rounded-xl border border-slate-800">
+                <span className="text-sky-300 font-bold block mb-1">2. Defensive Procedures &amp; d20 Checks</span>
+                <p className="text-slate-300 leading-relaxed">
+                  Choose a procedure from the left column (Endpoint, Network, Logs, Controls) and roll a <strong>d20</strong>. Rolling equal to or above the Difficulty Check (DC) reveals and contains that attack phase.
+                </p>
+              </div>
+
+              <div className="p-3 bg-ocean-950 rounded-xl border border-slate-800">
+                <span className="text-emerald-300 font-bold block mb-1">3. Strikes &amp; Operational Injects</span>
+                <p className="text-slate-300 leading-relaxed">
+                  Failed checks add <strong>1 Strike</strong> to the Doom Tracker. Every 2 strikes trigger an automatic <strong>Inject card</strong>. If strikes reach <strong>10/10</strong>, the Secret Formula is stolen and defenders lose!
+                </p>
+              </div>
+            </div>
+
+            <div className="flex justify-between items-center pt-2">
+              <span className="text-[10px] text-slate-500 font-mono">Shortcuts: [F] Facilitator &bull; [R] Reset &bull; [?] Rules</span>
+              <button
+                onClick={() => setShowQuickRules(false)}
+                className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl font-mono text-xs transition-colors"
+              >
+                Got It, Return to Board
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
