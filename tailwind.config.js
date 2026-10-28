@@ -7,6 +7,72 @@ export default {
   theme: {
     extend: {
       colors: {
+        galley: {
+          950: '#140d07',
+          900: '#1f140c',
+          850: '#24180f',
+          800: '#2a1b10',
+          700: '#3b2717',
+          600: '#543820',
+          500: '#784f2d',
+          400: '#9a6a42',
+          300: '#c29267',
+        },
+        brass: {
+          50: '#fefce8',
+          100: '#fef3c7',
+          200: '#fde68a',
+          300: '#ffd166',
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#d97706',
+          700: '#b45309',
+          800: '#92400e',
+          900: '#78350f',
+          950: '#451a03',
+        },
+        parchment: {
+          50: '#fefce8',
+          100: '#fef9c3',
+          200: '#fef08a',
+          300: '#f5f0d8',
+          400: '#ece5c3',
+          500: '#dfd4a7',
+          600: '#c5b885',
+        },
+        marine: {
+          950: '#041e28',
+          900: '#082f3d',
+          800: '#0e4354',
+          700: '#155e75',
+          600: '#0e7490',
+          500: '#06b6d4',
+          400: '#38bdf8',
+        },
+        kelp: {
+          950: '#032018',
+          900: '#064e3b',
+          800: '#065f46',
+          700: '#047857',
+          600: '#059669',
+          500: '#10b981',
+          400: '#34d399',
+          300: '#6ee7b7',
+        },
+        chum: {
+          400: '#4ade80',
+          500: '#22c55e',
+          600: '#16a34a',
+        },
+        barnacle: {
+          950: '#450a0a',
+          900: '#7f1d1d',
+          800: '#991b1b',
+          700: '#b91c1c',
+          600: '#dc2626',
+          500: '#ef4444',
+          400: '#f87171',
+        },
         ocean: {
           950: '#030b17',
           900: '#07162c',
@@ -33,8 +99,15 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['Georgia', 'Cambria', 'Baskerville', 'serif'],
-        mono: ['Courier New', 'Consolas', 'monospace']
+        display: ['Fraunces', 'Cinzel', 'Georgia', 'serif'],
+        serif: ['Fraunces', 'Georgia', 'Cambria', 'Baskerville', 'serif'],
+        mono: ['"JetBrains Mono"', 'Consolas', '"Courier New"', 'monospace'],
+        cinzel: ['Cinzel', 'Georgia', 'serif'],
+      },
+      boxShadow: {
+        'brass-glow': '0 0 15px rgba(245, 158, 11, 0.25)',
+        'brass-inner': 'inset 0 2px 4px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(180, 83, 9, 0.3)',
+        'wood-table': '0 20px 40px -15px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
       }
     },
   },
