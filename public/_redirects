@@ -1,6 +1,6 @@
-# Cloudflare Pages SPA Routing
-/*    /index.html   200
-
 # Canonical Vanity Redirects
 https://kas.ketron.dev/*                   https://krabs.ketron.dev/:splat    301!
 https://krabsagainstsecurity.ketron.dev/*  https://krabs.ketron.dev/:splat    301!
+
+# Cloudflare Pages SPA Routing
+/*    /index.html   200
