@@ -302,22 +302,6 @@ function drawCardFace(
     borderWidth: 0.5
   });
 
-  // 4 Corner Rivets
-  const rivetOffset = 5;
-  const rivetRadius = 1.5;
-  const rivetColor = ecoMode ? rgb(0, 0, 0) : rgb(0.95, 0.75, 0.2);
-  [[x + rivetOffset, y + rivetOffset],
-   [x + w - rivetOffset, y + rivetOffset],
-   [x + rivetOffset, y + h - rivetOffset],
-   [x + w - rivetOffset, y + h - rivetOffset]].forEach(([rx, ry]) => {
-    page.drawCircle({
-      x: rx,
-      y: ry,
-      size: rivetRadius,
-      color: rivetColor
-    });
-  });
-
   // Header Bar (Deck Name + ID)
   page.drawText(card.deck.replace('_', ' ').toUpperCase(), {
     x: x + 10,
@@ -490,22 +474,6 @@ function drawCardBack(
     borderColor: ecoMode ? rgb(0, 0, 0) : deckRgb,
     borderWidth: 2,
     color: ecoMode ? rgb(1, 1, 1) : rgb(0.07, 0.1, 0.18)
-  });
-
-  // Corner Rivets
-  const rivetOffset = 5;
-  const rivetRadius = 1.5;
-  const rivetColor = ecoMode ? rgb(0, 0, 0) : rgb(0.95, 0.75, 0.2);
-  [[x + rivetOffset, y + rivetOffset],
-   [x + w - rivetOffset, y + rivetOffset],
-   [x + rivetOffset, y + h - rivetOffset],
-   [x + w - rivetOffset, y + h - rivetOffset]].forEach(([rx, ry]) => {
-    page.drawCircle({
-      x: rx,
-      y: ry,
-      size: rivetRadius,
-      color: rivetColor
-    });
   });
 
   // Center Compass / Emblem Box

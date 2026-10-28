@@ -37,7 +37,7 @@ export const CardIcon: React.FC<{ iconName: string; className?: string; ecoMode?
   className = "w-10 h-10",
   ecoMode = false 
 }) => {
-  const iconProps = { className, strokeWidth: ecoMode ? 1.75 : 1.5 };
+  const iconProps = { className, strokeWidth: ecoMode ? 2 : 1.75 };
 
   switch (iconName) {
     case 'hook':
@@ -46,7 +46,7 @@ export const CardIcon: React.FC<{ iconName: string; className?: string; ecoMode?
       return <Server {...iconProps} />;
     case 'clam':
       return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={ecoMode ? "1.75" : "1.5"} className={className}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={ecoMode ? "2" : "1.75"} className={className}>
           <path d="M12 2C6.5 2 2 6.5 2 12c0 4 2.5 7.5 6 9l4 1 4-1c3.5-1.5 6-5 6-9 0-5.5-4.5-10-10-10z" />
           <path d="M12 2v20" />
           <path d="M7 6c2 4 3 10 3 15" />
@@ -85,28 +85,6 @@ export const CardIcon: React.FC<{ iconName: string; className?: string; ecoMode?
   }
 };
 
-// Crisp brass corner rivets with metallic specular highlights and screw slot
-const Rivet: React.FC<{ position: 'tl' | 'tr' | 'bl' | 'br'; ecoMode?: boolean }> = ({ position, ecoMode }) => {
-  const posClasses = {
-    tl: 'top-2 left-2',
-    tr: 'top-2 right-2',
-    bl: 'bottom-2 left-2',
-    br: 'bottom-2 right-2'
-  }[position];
-
-  if (ecoMode) {
-    return (
-      <div className={`absolute ${posClasses} w-2 h-2 rounded-full border border-black z-20 pointer-events-none`} />
-    );
-  }
-
-  return (
-    <div className={`absolute ${posClasses} w-2.5 h-2.5 rounded-full bg-gradient-to-br from-brass-100 via-brass-400 to-brass-800 shadow-[0_1px_3px_rgba(0,0,0,0.8)] border border-brass-900/80 z-20 pointer-events-none flex items-center justify-center`}>
-      <div className="w-1.5 h-0.5 bg-brass-950/70 transform rotate-45" />
-    </div>
-  );
-};
-
 export const Card: React.FC<CardProps> = ({
   card,
   isBack = false,
@@ -122,40 +100,44 @@ export const Card: React.FC<CardProps> = ({
 
   // Scale classes based on standard poker aspect ratio (2.5in x 3.5in => 5:7 ratio)
   const sizeClasses = {
-    sm: 'w-44 h-[246px] text-xs',
-    md: 'w-64 h-[358px] text-xs',
-    lg: 'w-80 h-[448px] text-sm',
-    print: 'w-[2.5in] h-[3.5in] text-[10px] leading-tight select-none'
+    sm: 'w-48 h-[272px] text-xs',
+    md: 'w-64 h-[364px] text-xs',
+    lg: 'w-80 h-[456px] text-sm',
+    print: 'w-[2.5in] h-[3.5in] text-xs leading-tight select-none'
   }[size];
 
+  // =========================================================================
   // CARD BACK RENDERING
+  // =========================================================================
   if (isBack) {
     if (ecoMode) {
       return (
         <div 
           onClick={onClick}
-          className={`relative ${sizeClasses} rounded-xl border-2 border-black bg-white p-3 flex flex-col justify-between items-center text-black font-serif shadow-sm overflow-hidden ${className} ${interactive ? 'cursor-pointer hover:shadow-md' : ''}`}
+          className={`relative ${sizeClasses} rounded-2xl border-2 border-black bg-white p-3.5 flex flex-col justify-between items-center text-black font-sans shadow-sm overflow-hidden ${className} ${interactive ? 'cursor-pointer hover:shadow-md transition-shadow' : ''}`}
         >
-          <Rivet position="tl" ecoMode={true} />
-          <Rivet position="tr" ecoMode={true} />
-          <Rivet position="bl" ecoMode={true} />
-          <Rivet position="br" ecoMode={true} />
+          {/* Subtle Eco Border Filigree */}
+          <div className="absolute inset-1.5 border border-dashed border-black/40 rounded-xl pointer-events-none" />
 
-          <div className="w-full border-b border-black pb-1 text-center">
-            <span className="font-mono text-[9px] uppercase tracking-widest font-bold">KRABS AGAINST SECURITY</span>
+          <div className="w-full pb-1 text-center z-10 border-b border-black">
+            <span className="font-mono text-xs uppercase tracking-widest font-bold">
+              KRABS AGAINST SECURITY
+            </span>
           </div>
 
-          <div className="my-auto text-center flex flex-col items-center gap-2">
-            <div className="p-3 border-2 border-black rounded-full">
-              <Compass className="w-10 h-10 stroke-black stroke-[1.5]" />
+          <div className="my-auto text-center z-10 flex flex-col items-center gap-2.5">
+            <div className="p-3.5 border-2 border-black rounded-full bg-slate-50">
+              <Compass className="w-10 h-10 stroke-black stroke-2" />
             </div>
-            <div className="font-bold uppercase tracking-wider text-sm border-y border-black py-0.5 px-3">
+            <div className="font-display font-bold uppercase tracking-wider text-sm border-y-2 border-black py-1 px-4">
               {deck.name}
             </div>
-            <span className="font-mono text-[8px] text-slate-600">DECK SPECIFICATION // CLASSIFIED</span>
+            <span className="font-mono text-xs text-slate-700 font-semibold tracking-wide">
+              INCIDENT RESPONSE DECK
+            </span>
           </div>
 
-          <div className="w-full border-t border-black pt-1 flex justify-between items-center text-[7px] font-mono">
+          <div className="w-full z-10 border-t border-black pt-1.5 flex justify-between items-center text-xs font-mono text-slate-800">
             <span>BHIS CC BY-SA 4.0</span>
             <span>KRUSTY KRAB SOC</span>
           </div>
@@ -167,43 +149,36 @@ export const Card: React.FC<CardProps> = ({
       <div 
         onClick={onClick}
         style={{ borderColor: deck.borderColor }}
-        className={`relative ${sizeClasses} rounded-xl border-4 bg-gradient-to-b ${deck.bgGradient} p-3 flex flex-col justify-between items-center text-parchment-100 font-serif shadow-2xl shadow-black/80 overflow-hidden ${className} ${interactive ? 'cursor-pointer hover:scale-[1.02] hover:shadow-[0_20px_35px_-5px_rgba(0,0,0,0.9),0_0_15px_rgba(245,158,11,0.25)] transition-all duration-200' : ''}`}
+        className={`relative ${sizeClasses} rounded-2xl border-2 bg-gradient-to-b ${deck.bgGradient} p-4 flex flex-col justify-between items-center text-slate-100 font-sans shadow-xl shadow-black/80 overflow-hidden ${className} ${interactive ? 'cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition-all duration-200' : ''}`}
       >
-        <Rivet position="tl" />
-        <Rivet position="tr" />
-        <Rivet position="bl" />
-        <Rivet position="br" />
-
-        {/* Double-line Brass Filigree Inner Trim */}
-        <div className="absolute inset-1.5 border border-brass-400/40 rounded-lg pointer-events-none" />
-        <div className="absolute inset-2 border border-brass-500/20 rounded-md pointer-events-none" />
+        {/* Subtle, Tasteful Inner Filigree Border */}
+        <div className="absolute inset-2 border border-white/15 rounded-xl pointer-events-none" />
 
         {/* Top Header */}
-        <div className="w-full text-center z-10 border-b border-brass-400/30 pb-1.5">
-          <span className="font-mono text-[9px] uppercase tracking-widest text-brass-300 font-bold drop-shadow">
+        <div className="w-full text-center z-10 border-b border-white/15 pb-2">
+          <span className="font-mono text-xs uppercase tracking-widest text-slate-300 font-bold">
             KRABS AGAINST SECURITY
           </span>
         </div>
 
         {/* Center Crest */}
-        <div className="my-auto text-center z-10 flex flex-col items-center gap-2">
-          <div className="relative p-4 rounded-full bg-galley-950/80 border-2 border-brass-500/80 shadow-[inset_0_2px_8px_rgba(0,0,0,0.9)]">
-            <CardIcon iconName={card.iconName || deck.defaultIcon} className="w-12 h-12 text-brass-400" />
-            <div className="absolute -inset-1 rounded-full border border-brass-400/30 animate-pulse pointer-events-none" />
+        <div className="my-auto text-center z-10 flex flex-col items-center gap-3">
+          <div className="p-4 rounded-full bg-slate-950/80 border border-white/20 shadow-lg">
+            <CardIcon iconName={card.iconName || deck.defaultIcon} className="w-11 h-11 text-amber-400" />
           </div>
 
-          <div className="px-3.5 py-1 rounded bg-black/75 border border-brass-500/50 shadow-md">
-            <span className="font-display font-bold uppercase tracking-wider text-xs text-brass-200 drop-shadow">
+          <div className="px-4 py-1.5 rounded-lg bg-slate-950/90 border border-white/20 shadow-md">
+            <span className="font-display font-bold uppercase tracking-wider text-sm text-slate-100">
               {deck.name}
             </span>
           </div>
-          <span className="font-mono text-[8px] text-parchment-300/70 tracking-wider">
+          <span className="font-mono text-xs text-slate-300/80 tracking-wider">
             RESTRICTED // FORMULA SECURITY
           </span>
         </div>
 
         {/* Bottom Bar */}
-        <div className="w-full z-10 border-t border-brass-400/30 pt-1.5 flex justify-between items-center text-[7px] font-mono text-parchment-300/80">
+        <div className="w-full z-10 border-t border-white/15 pt-2 flex justify-between items-center text-xs font-mono text-slate-400">
           <span>BHIS CC BY-SA 4.0</span>
           <span>KRUSTY KRAB SOC</span>
         </div>
@@ -211,54 +186,53 @@ export const Card: React.FC<CardProps> = ({
     );
   }
 
+  // =========================================================================
   // CARD FRONT RENDERING - ECO MODE
+  // =========================================================================
   if (ecoMode) {
     return (
       <div 
         onClick={onClick}
-        className={`relative ${sizeClasses} rounded-xl border-2 border-black bg-white p-2.5 flex flex-col justify-between text-black font-sans shadow-sm overflow-hidden ${className} ${selected ? 'ring-2 ring-black' : ''} ${interactive ? 'cursor-pointer hover:bg-slate-50' : ''}`}
+        className={`relative ${sizeClasses} rounded-2xl border-2 border-black bg-white p-3 flex flex-col justify-between text-black font-sans shadow-sm overflow-hidden ${className} ${selected ? 'ring-2 ring-black' : ''} ${interactive ? 'cursor-pointer hover:shadow-md transition-shadow' : ''}`}
       >
-        <Rivet position="tl" ecoMode={true} />
-        <Rivet position="tr" ecoMode={true} />
-        <Rivet position="bl" ecoMode={true} />
-        <Rivet position="br" ecoMode={true} />
-
         {/* Header Bar */}
-        <div className="border-b border-black pb-1 mb-1">
-          <div className="flex justify-between items-center text-[8px] font-mono font-bold tracking-wider uppercase mb-0.5">
-            <span className="px-1 border border-black rounded">{deck.shortName}</span>
+        <div className="border-b border-black pb-1.5 mb-1.5">
+          <div className="flex justify-between items-center text-xs font-mono font-bold tracking-wider uppercase mb-1">
+            <span className="px-1.5 py-0.5 border border-black rounded">{deck.shortName}</span>
             <span>{card.id}</span>
           </div>
-          <h3 className="font-display font-bold text-xs leading-tight text-black line-clamp-2">
+          <h3 className="font-display font-bold text-sm leading-tight text-black line-clamp-2">
             {card.title}
           </h3>
           {card.attackId && (
-            <div className="font-mono text-[8px] text-slate-700 font-semibold mt-0.5">
+            <div className="font-mono text-xs text-slate-800 font-semibold mt-0.5">
               ATT&CK: {card.attackId}
             </div>
           )}
         </div>
 
-        {/* Center Art / Icon Fallback Box */}
-        <div className="h-20 w-full border border-black rounded flex items-center justify-center bg-slate-50 relative overflow-hidden my-1">
+        {/* Center Vector Icon Box */}
+        <div className="h-20 w-full border border-black rounded-lg flex items-center justify-center bg-slate-50 relative overflow-hidden my-1">
           <CardIcon iconName={card.iconName} className="w-10 h-10 text-black" ecoMode={true} />
-          <div className="absolute bottom-0.5 right-1 text-[7px] font-mono text-slate-500">
-            {card.nistPhase || 'IR PHASE'}
-          </div>
+          {card.nistPhase && (
+            <div className="absolute bottom-1 right-2 text-xs font-mono font-semibold text-slate-700 uppercase">
+              {card.nistPhase}
+            </div>
+          )}
         </div>
 
         {/* Mechanics & Description Box */}
-        <div className="flex-1 flex flex-col justify-between text-[9px] leading-snug border border-black/80 rounded p-1.5 bg-white">
-          <p className="font-mono text-black font-normal line-clamp-4">
+        <div className="flex-1 flex flex-col justify-between text-xs leading-relaxed border border-black rounded-lg p-2 bg-white">
+          <p className="font-mono text-black text-xs leading-relaxed line-clamp-4">
             {card.description}
           </p>
 
           {/* Checks for Procedures */}
           {card.checks && card.checks.length > 0 && (
-            <div className="mt-1 pt-1 border-t border-dashed border-black">
+            <div className="mt-1.5 pt-1.5 border-t border-dashed border-black space-y-1">
               {card.checks.map((chk, idx) => (
-                <div key={idx} className="flex items-center gap-1 font-mono font-bold text-[8.5px]">
-                  <span className="border border-black px-1 rounded text-black">{chk.target}+</span>
+                <div key={idx} className="flex items-center gap-1.5 font-mono font-bold text-xs">
+                  <span className="border border-black px-1.5 py-0.2 rounded text-black">{chk.target}+</span>
                   <span className="truncate">{chk.description}</span>
                 </div>
               ))}
@@ -267,14 +241,14 @@ export const Card: React.FC<CardProps> = ({
 
           {/* Inject Effect */}
           {card.injectEffect && (
-            <div className="mt-1 pt-1 border-t border-dashed border-black font-mono font-bold text-[8.5px] text-black">
+            <div className="mt-1.5 pt-1.5 border-t border-dashed border-black font-mono font-bold text-xs text-black">
               EFFECT: {card.injectEffect}
             </div>
           )}
         </div>
 
         {/* Footer */}
-        <div className="pt-1 mt-1 border-t border-black flex justify-between items-center text-[7px] font-mono text-slate-700">
+        <div className="pt-1.5 mt-1 border-t border-black flex justify-between items-center text-xs font-mono text-slate-800">
           <span>K.A.S. TIER 0</span>
           <span>CC BY-SA 4.0</span>
         </div>
@@ -282,39 +256,36 @@ export const Card: React.FC<CardProps> = ({
     );
   }
 
-  // CARD FRONT RENDERING - FULL SATURATION TIER 0 PROCEDURAL
+  // =========================================================================
+  // CARD FRONT RENDERING - FULL SATURATION TACTILE TABLETOP CARD
+  // =========================================================================
   const hasArtImage = Boolean(card.artAsset && !imageError);
 
   return (
     <div 
       onClick={onClick}
       style={{ borderColor: deck.borderColor }}
-      className={`relative ${sizeClasses} rounded-xl border-4 bg-gradient-to-b ${deck.bgGradient} p-2.5 flex flex-col justify-between text-parchment-100 font-sans shadow-2xl shadow-black/80 overflow-hidden ${className} ${selected ? 'ring-4 ring-brass-400 scale-[1.02]' : ''} ${interactive ? 'cursor-pointer hover:scale-[1.02] hover:shadow-[0_20px_35px_-5px_rgba(0,0,0,0.95),0_0_15px_rgba(245,158,11,0.25)] transition-all duration-200' : ''}`}
+      className={`relative ${sizeClasses} rounded-2xl border-2 bg-gradient-to-b ${deck.bgGradient} p-3 flex flex-col justify-between text-slate-100 font-sans shadow-xl shadow-black/80 overflow-hidden ${className} ${selected ? 'ring-4 ring-amber-400 scale-[1.02]' : ''} ${interactive ? 'cursor-pointer hover:scale-[1.02] hover:shadow-2xl hover:-translate-y-1 transition-all duration-200' : ''}`}
     >
-      <Rivet position="tl" />
-      <Rivet position="tr" />
-      <Rivet position="bl" />
-      <Rivet position="br" />
-
-      {/* Decorative Inner Linen / Brass Bevel Border */}
-      <div className="absolute inset-1 border border-white/15 rounded-lg pointer-events-none" />
+      {/* Subtle Inner Card Border */}
+      <div className="absolute inset-1.5 border border-white/10 rounded-xl pointer-events-none" />
 
       {/* Header Bar */}
-      <div className="z-10 border-b border-white/20 pb-1 mb-1">
-        <div className="flex justify-between items-center text-[8px] font-mono uppercase tracking-wider mb-0.5">
-          <span className={`px-1.5 py-0.2 rounded font-bold shadow-sm ${deck.badgeBg} ${deck.badgeText}`}>
+      <div className="z-10 border-b border-white/15 pb-1.5 mb-1">
+        <div className="flex justify-between items-center text-xs font-mono uppercase tracking-wider mb-1">
+          <span className={`px-2 py-0.5 rounded font-bold shadow-sm ${deck.badgeBg} ${deck.badgeText}`}>
             {deck.shortName}
           </span>
-          <span className="font-mono text-brass-300 font-bold bg-black/50 px-1 rounded border border-brass-600/30">
+          <span className="font-mono text-amber-300 font-bold bg-slate-950/70 px-1.5 py-0.5 rounded border border-white/10">
             {card.id}
           </span>
         </div>
-        <h3 className="font-display font-bold text-xs sm:text-sm leading-tight text-parchment-100 drop-shadow line-clamp-2">
+        <h3 className="font-display font-bold text-sm sm:text-base leading-tight text-white line-clamp-2">
           {card.title}
         </h3>
         {card.attackId && (
-          <div className="flex items-center gap-1 font-mono text-[8px] text-brass-300/90 mt-0.5">
-            <span className="bg-galley-950/90 px-1 py-0.2 rounded border border-brass-500/40">
+          <div className="flex items-center gap-1 font-mono text-xs text-amber-300/90 mt-1">
+            <span className="bg-slate-950/80 px-1.5 py-0.5 rounded border border-white/10 font-semibold">
               MITRE {card.attackId}
             </span>
           </div>
@@ -322,7 +293,7 @@ export const Card: React.FC<CardProps> = ({
       </div>
 
       {/* Procedural Art Box / Image Hydration Container */}
-      <div className="relative h-24 w-full rounded-md border border-brass-500/50 bg-gradient-to-br from-galley-950 via-galley-900 to-black overflow-hidden flex items-center justify-center my-1 shadow-[inset_0_2px_6px_rgba(0,0,0,0.9)] z-10">
+      <div className="relative h-24 w-full rounded-xl border border-white/15 bg-slate-950/80 overflow-hidden flex items-center justify-center my-1 shadow-inner z-10">
         {hasArtImage ? (
           <img 
             src={card.artAsset} 
@@ -332,27 +303,24 @@ export const Card: React.FC<CardProps> = ({
           />
         ) : (
           <div className="flex flex-col items-center justify-center relative w-full h-full">
-            {/* Soft Radial Vignette Background */}
-            <div className="absolute inset-0 bg-radial from-brass-500/15 via-transparent to-black/75 pointer-events-none" />
-            <div className="p-2 rounded-full bg-galley-900/90 border border-brass-500/40 shadow-md">
-              <CardIcon iconName={card.iconName} className="w-10 h-10 text-brass-400" />
+            <div className="p-2.5 rounded-full bg-slate-900 border border-white/15 shadow-md">
+              <CardIcon iconName={card.iconName} className="w-9 h-9 text-amber-400" />
             </div>
-            {/* Subtle Nautical Coordinate Watermark */}
-            <span className="absolute bottom-1 right-1.5 text-[7px] font-mono text-parchment-400/60 tracking-tighter">
-              LAT 11°58&apos;N LON 165°23&apos;E
-            </span>
             {card.nistPhase && (
-              <span className="absolute top-1 left-1.5 text-[7px] font-mono text-marine-400 tracking-tighter uppercase font-semibold">
+              <span className="absolute top-1.5 left-2 text-xs font-mono text-cyan-300 uppercase font-semibold">
                 {card.nistPhase}
               </span>
             )}
+            <span className="absolute bottom-1.5 right-2 text-xs font-mono text-slate-500">
+              IR PHASE
+            </span>
           </div>
         )}
       </div>
 
-      {/* Mechanics & Terminal Description Box */}
-      <div className="z-10 flex-1 flex flex-col justify-between text-[9px] leading-snug rounded-md border border-brass-800/40 bg-galley-950/85 p-2 backdrop-blur-xs shadow-inner">
-        <p className="font-mono text-parchment-200 line-clamp-4">
+      {/* Mechanics & Description Box */}
+      <div className="z-10 flex-1 flex flex-col justify-between text-xs leading-relaxed rounded-xl border border-white/10 bg-slate-950/80 p-2.5 backdrop-blur-xs shadow-inner">
+        <p className="font-mono text-slate-200 text-xs leading-relaxed line-clamp-4">
           {card.description}
         </p>
 
@@ -360,11 +328,11 @@ export const Card: React.FC<CardProps> = ({
         {card.checks && card.checks.length > 0 && (
           <div className="mt-1.5 pt-1.5 border-t border-white/10 space-y-1">
             {card.checks.map((chk, idx) => (
-              <div key={idx} className="flex items-center gap-1.5 font-mono text-[9px]">
-                <span className="bg-marine-500 text-slate-950 font-bold px-1 rounded shadow-xs text-[8.5px]">
+              <div key={idx} className="flex items-center gap-1.5 font-mono text-xs">
+                <span className="bg-cyan-500 text-slate-950 font-bold px-1.5 py-0.5 rounded shadow-xs text-xs">
                   {chk.target}+
                 </span>
-                <span className="text-marine-200 truncate">{chk.description}</span>
+                <span className="text-cyan-200 truncate">{chk.description}</span>
               </div>
             ))}
           </div>
@@ -372,24 +340,26 @@ export const Card: React.FC<CardProps> = ({
 
         {/* Inject Effect Badge */}
         {card.injectEffect && (
-          <div className="mt-1.5 pt-1.5 border-t border-kelp-500/30 font-mono text-[9px] text-kelp-300 font-semibold flex items-start gap-1">
-            <span className="bg-kelp-600/90 text-white px-1 rounded text-[8px] font-bold">EFFECT</span>
-            <span className="line-clamp-2">{card.injectEffect}</span>
+          <div className="mt-1.5 pt-1.5 border-t border-emerald-500/30 font-mono text-xs text-emerald-300 font-semibold flex items-start gap-1.5">
+            <span className="bg-emerald-500 text-slate-950 px-1.5 py-0.5 rounded text-xs font-bold shrink-0">
+              EFFECT
+            </span>
+            <span className="line-clamp-2 text-xs leading-snug">{card.injectEffect}</span>
           </div>
         )}
 
         {/* Flavor Lore Text */}
         {card.flavorText && !card.checks && !card.injectEffect && (
-          <div className="mt-1 pt-1 border-t border-brass-500/20 font-serif italic text-brass-300/80 text-[8.5px] line-clamp-2">
+          <div className="mt-1 pt-1 border-t border-white/10 font-serif italic text-amber-200/80 text-xs line-clamp-2">
             {card.flavorText}
           </div>
         )}
       </div>
 
       {/* Card Footer Bar */}
-      <div className="z-10 pt-1 mt-1 border-t border-white/20 flex justify-between items-center text-[7px] font-mono text-parchment-400">
+      <div className="z-10 pt-1.5 mt-1 border-t border-white/15 flex justify-between items-center text-xs font-mono text-slate-400">
         <span className="flex items-center gap-1">
-          <CheckCircle2 className="w-2.5 h-2.5 text-brass-400" />
+          <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
           K.A.S. TIER 0
         </span>
         <span>BHIS CC BY-SA 4.0</span>
