@@ -32,7 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onSelectTab }) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 shadow-xl transition-colors">
+    <header className="sticky top-0 z-50 bg-galley-950/90 backdrop-blur-md border-b border-amber-900/40 shadow-xl transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
         {/* Brand Plaque */}
         <div 
@@ -40,20 +40,20 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onSelectTab }) => {
           className="flex items-center gap-3 cursor-pointer group select-none"
         >
           {/* Emblem: Modern Nautical Shield */}
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-700/80 flex items-center justify-center text-amber-400 shadow-md group-hover:border-amber-500/50 group-hover:text-amber-300 transition-all">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-950/80 to-galley-950 border border-amber-600/40 flex items-center justify-center text-amber-400 shadow-md group-hover:border-amber-400 group-hover:text-amber-300 transition-all">
             <Anchor className="w-5 h-5 transition-transform group-hover:scale-105" />
           </div>
 
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-display font-black text-base sm:text-lg tracking-wider text-slate-100 uppercase group-hover:text-amber-400 transition-colors">
+              <span className="font-display font-black text-base sm:text-lg tracking-wider text-amber-100 uppercase group-hover:text-amber-400 transition-colors">
                 KRABS AGAINST SECURITY
               </span>
-              <span className="hidden sm:inline-block bg-slate-900 text-amber-400 border border-slate-700/80 text-[10px] font-mono px-2 py-0.5 rounded-full font-bold uppercase tracking-widest shadow-sm">
+              <span className="hidden sm:inline-block bg-amber-950/80 text-amber-300 border border-amber-600/40 text-[10px] font-mono px-2 py-0.5 rounded-full font-bold uppercase tracking-widest shadow-sm">
                 INCIDENT RESPONSE
               </span>
             </div>
-            <p className="hidden md:block text-xs font-mono text-slate-400">
+            <p className="hidden md:block text-xs font-mono text-amber-200/70">
               Cybersecurity Incident Response Tabletop &bull; Based on Backdoors &amp; Breaches
             </p>
           </div>
@@ -66,7 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onSelectTab }) => {
             className={`px-3 py-1.5 rounded-full font-sans text-xs font-semibold transition-all flex items-center gap-1.5 ${
               currentTab === 'tabletop' 
                 ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20' 
-                : 'text-slate-300 hover:text-white hover:bg-slate-900'
+                : 'text-amber-200/80 hover:text-white hover:bg-slate-900'
             }`}
           >
             <ShieldAlert className="w-3.5 h-3.5" />
@@ -79,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onSelectTab }) => {
             className={`px-3 py-1.5 rounded-full font-sans text-xs font-semibold transition-all flex items-center gap-1.5 ${
               currentTab === 'print' 
                 ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20' 
-                : 'text-slate-300 hover:text-white hover:bg-slate-900'
+                : 'text-amber-200/80 hover:text-white hover:bg-slate-900'
             }`}
           >
             <Printer className="w-3.5 h-3.5" />
@@ -92,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onSelectTab }) => {
             className={`px-3 py-1.5 rounded-full font-sans text-xs font-semibold transition-all flex items-center gap-1.5 ${
               currentTab === 'catalog' 
                 ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20' 
-                : 'text-slate-300 hover:text-white hover:bg-slate-900'
+                : 'text-amber-200/80 hover:text-white hover:bg-slate-900'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
@@ -105,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onSelectTab }) => {
             className={`px-3 py-1.5 rounded-full font-sans text-xs font-semibold transition-all flex items-center gap-1.5 ${
               currentTab === 'rules' 
                 ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20' 
-                : 'text-slate-300 hover:text-white hover:bg-slate-900'
+                : 'text-amber-200/80 hover:text-white hover:bg-slate-900'
             }`}
           >
             <HelpCircle className="w-3.5 h-3.5" />
@@ -116,7 +116,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onSelectTab }) => {
           {/* Sound Mute Toggle */}
           <button
             onClick={toggleSound}
-            className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white transition-colors flex items-center justify-center shadow-sm ml-1"
+            className="w-8 h-8 rounded-full bg-slate-900 border border-amber-900/40 hover:border-amber-600/40 text-amber-200/80 hover:text-white transition-colors flex items-center justify-center shadow-sm ml-1"
             title={isMuted ? "Unmute Audio" : "Mute Audio"}
             aria-label="Toggle Sound"
           >
@@ -128,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onSelectTab }) => {
             href="https://github.com/Koality-Assured/krabs-against-security-web"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white transition-colors flex items-center justify-center shadow-sm"
+            className="w-8 h-8 rounded-full bg-slate-900 border border-amber-900/40 hover:border-amber-600/40 text-amber-200/80 hover:text-white transition-colors flex items-center justify-center shadow-sm"
             title="View Source on GitHub"
             aria-label="GitHub Repository"
           >
