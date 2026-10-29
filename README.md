@@ -29,7 +29,7 @@ Vanity Aliases: `https://kas.ketron.dev` &bull; `https://krabsagainstsecurity.ke
 ## Features
 ### 1. Tier 0 Procedural CSS/SVG Card Renderer (`Card.tsx`)
 - Zero-image requirement: Fully playable and printable with pure CSS and vector SVGs immediately.
-- Color-coded borders matching canonical deck types with corner brass rivets:
+- Color-coded borders matching canonical deck types with maritime brass inner bevels:
   - **Initial Compromise** (Crimson / Red)
   - **Pivot & Escalate** (Amber / Yellow)
   - **Persistence** (Violet / Purple)

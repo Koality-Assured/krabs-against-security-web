@@ -506,9 +506,6 @@ export const TabletopBoard: React.FC<TabletopBoardProps> = ({ allCards }) => {
       {/* 2. KRUSTY GALLEY 10-STRIKE TRACKER & BOILER PRESSURE DOOM CLOCK */}
       {/* ========================================================================= */}
       <div className="rounded-3xl p-5 bg-galley-950/85 border border-amber-900/40 shadow-2xl backdrop-blur-md relative">
-        {/* Brass Corner Rivets */}
-        <div className="absolute top-2.5 left-2.5 brass-rivet pointer-events-none" />
-        <div className="absolute top-2.5 right-2.5 brass-rivet pointer-events-none" />
 
         {/* Strike Meter Header */}
         <div className="flex justify-between items-center mb-3 pb-2 border-b border-amber-900/40 flex-wrap gap-2">
@@ -609,11 +606,6 @@ export const TabletopBoard: React.FC<TabletopBoardProps> = ({ allCards }) => {
       {/* 3. TABLETOP PLAYMAT: 4 BREACH VECTOR SLOTS (ARMED, DETECTED, CONTAINED) */}
       {/* ========================================================================= */}
       <div className="rounded-3xl p-5 sm:p-7 oceanic-felt brass-perimeter shadow-2xl relative">
-        {/* Brass Rivets at Corners */}
-        <div className="absolute top-3 left-3 brass-rivet pointer-events-none" />
-        <div className="absolute top-3 right-3 brass-rivet pointer-events-none" />
-        <div className="absolute bottom-3 left-3 brass-rivet pointer-events-none" />
-        <div className="absolute bottom-3 right-3 brass-rivet pointer-events-none" />
 
         {/* Playmat Header */}
         <div className="flex justify-between items-center mb-5 pb-3 border-b border-amber-600/30 px-2">
