@@ -17,10 +17,12 @@ import {
   Wifi, 
   Bug,
   Compass,
-  CheckCircle2
+  ChevronUp,
+  ChevronDown,
+  Target
 } from 'lucide-react';
 
-interface CardProps {
+export interface CardProps {
   card: CardData;
   isBack?: boolean;
   ecoMode?: boolean;
@@ -96,9 +98,10 @@ export const Card: React.FC<CardProps> = ({
   className = ''
 }) => {
   const [imageError, setImageError] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const deck = DECK_CONFIG[card.deck] || DECK_CONFIG.initial_compromise;
 
-  // Scale classes based on standard poker aspect ratio (2.5in x 3.5in => 5:7 ratio)
+  // Poker card aspect ratio (5:7 ratio)
   const sizeClasses = {
     sm: 'w-48 h-[272px] text-xs',
     md: 'w-64 h-[364px] text-xs',
@@ -107,7 +110,7 @@ export const Card: React.FC<CardProps> = ({
   }[size];
 
   // =========================================================================
-  // CARD BACK RENDERING
+  // 1. CARD BACK RENDERING (Standard & Eco)
   // =========================================================================
   if (isBack) {
     if (ecoMode) {
@@ -151,28 +154,28 @@ export const Card: React.FC<CardProps> = ({
         style={{ borderColor: deck.borderColor }}
         className={`relative ${sizeClasses} rounded-2xl border-2 bg-gradient-to-b ${deck.bgGradient} p-4 flex flex-col justify-between items-center text-slate-100 font-sans shadow-xl shadow-black/80 overflow-hidden ${className} ${interactive ? 'cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition-all duration-200' : ''}`}
       >
-        {/* Subtle, Tasteful Inner Filigree Border */}
-        <div className="absolute inset-2 border border-white/15 rounded-xl pointer-events-none" />
+        {/* Brass Inner Filigree Border */}
+        <div className="absolute inset-2 border border-amber-400/25 rounded-xl pointer-events-none" />
 
         {/* Top Header */}
         <div className="w-full text-center z-10 border-b border-white/15 pb-2">
-          <span className="font-mono text-xs uppercase tracking-widest text-slate-300 font-bold">
+          <span className="font-mono text-xs uppercase tracking-widest text-amber-200/90 font-bold">
             KRABS AGAINST SECURITY
           </span>
         </div>
 
         {/* Center Crest */}
         <div className="my-auto text-center z-10 flex flex-col items-center gap-3">
-          <div className="p-4 rounded-full bg-slate-950/80 border border-white/20 shadow-lg">
+          <div className="p-4 rounded-full bg-slate-950/80 border border-amber-500/40 shadow-xl shadow-black/80">
             <CardIcon iconName={card.iconName || deck.defaultIcon} className="w-11 h-11 text-amber-400" />
           </div>
 
-          <div className="px-4 py-1.5 rounded-lg bg-slate-950/90 border border-white/20 shadow-md">
+          <div className="px-4 py-1.5 rounded-lg bg-slate-950/90 border border-amber-500/30 shadow-md">
             <span className="font-display font-bold uppercase tracking-wider text-sm text-slate-100">
               {deck.name}
             </span>
           </div>
-          <span className="font-mono text-xs text-slate-300/80 tracking-wider">
+          <span className="font-mono text-xs text-amber-300/80 tracking-wider">
             RESTRICTED // FORMULA SECURITY
           </span>
         </div>
@@ -187,7 +190,7 @@ export const Card: React.FC<CardProps> = ({
   }
 
   // =========================================================================
-  // CARD FRONT RENDERING - ECO MODE
+  // 2. CARD FRONT RENDERING - ECO MODE (High Ink Efficiency)
   // =========================================================================
   if (ecoMode) {
     return (
@@ -196,17 +199,17 @@ export const Card: React.FC<CardProps> = ({
         className={`relative ${sizeClasses} rounded-2xl border-2 border-black bg-white p-3 flex flex-col justify-between text-black font-sans shadow-sm overflow-hidden ${className} ${selected ? 'ring-2 ring-black' : ''} ${interactive ? 'cursor-pointer hover:shadow-md transition-shadow' : ''}`}
       >
         {/* Header Bar */}
-        <div className="border-b border-black pb-1.5 mb-1.5">
-          <div className="flex justify-between items-center text-xs font-mono font-bold tracking-wider uppercase mb-1">
-            <span className="px-1.5 py-0.5 border border-black rounded">{deck.shortName}</span>
+        <div className="border-b border-black pb-1 mb-1">
+          <div className="flex justify-between items-center text-xs font-mono font-bold tracking-wider uppercase mb-0.5">
+            <span className="px-1.5 py-0.2 border border-black rounded">{deck.shortName}</span>
             <span>{card.id}</span>
           </div>
-          <h3 className="font-display font-bold text-sm leading-tight text-black line-clamp-2">
+          <h3 className="font-display font-bold text-xs sm:text-sm leading-tight text-black line-clamp-1">
             {card.title}
           </h3>
           {card.attackId && (
-            <div className="font-mono text-xs text-slate-800 font-semibold mt-0.5">
-              ATT&CK: {card.attackId}
+            <div className="font-mono text-[10px] text-slate-800 font-semibold">
+              ATT&amp;CK: {card.attackId}
             </div>
           )}
         </div>
@@ -215,7 +218,7 @@ export const Card: React.FC<CardProps> = ({
         <div className="h-20 w-full border border-black rounded-lg flex items-center justify-center bg-slate-50 relative overflow-hidden my-1">
           <CardIcon iconName={card.iconName} className="w-10 h-10 text-black" ecoMode={true} />
           {card.nistPhase && (
-            <div className="absolute bottom-1 right-2 text-xs font-mono font-semibold text-slate-700 uppercase">
+            <div className="absolute bottom-1 right-2 text-[10px] font-mono font-semibold text-slate-700 uppercase">
               {card.nistPhase}
             </div>
           )}
@@ -223,15 +226,15 @@ export const Card: React.FC<CardProps> = ({
 
         {/* Mechanics & Description Box */}
         <div className="flex-1 flex flex-col justify-between text-xs leading-relaxed border border-black rounded-lg p-2 bg-white">
-          <p className="font-mono text-black text-xs leading-relaxed line-clamp-4">
+          <p className="font-mono text-black text-[11px] leading-relaxed line-clamp-4">
             {card.description}
           </p>
 
           {/* Checks for Procedures */}
           {card.checks && card.checks.length > 0 && (
-            <div className="mt-1.5 pt-1.5 border-t border-dashed border-black space-y-1">
+            <div className="mt-1 pt-1 border-t border-dashed border-black space-y-0.5">
               {card.checks.map((chk, idx) => (
-                <div key={idx} className="flex items-center gap-1.5 font-mono font-bold text-xs">
+                <div key={idx} className="flex items-center gap-1.5 font-mono font-bold text-[11px]">
                   <span className="border border-black px-1.5 py-0.2 rounded text-black">{chk.target}+</span>
                   <span className="truncate">{chk.description}</span>
                 </div>
@@ -241,14 +244,14 @@ export const Card: React.FC<CardProps> = ({
 
           {/* Inject Effect */}
           {card.injectEffect && (
-            <div className="mt-1.5 pt-1.5 border-t border-dashed border-black font-mono font-bold text-xs text-black">
+            <div className="mt-1 pt-1 border-t border-dashed border-black font-mono font-bold text-[11px] text-black">
               EFFECT: {card.injectEffect}
             </div>
           )}
         </div>
 
         {/* Footer */}
-        <div className="pt-1.5 mt-1 border-t border-black flex justify-between items-center text-xs font-mono text-slate-800">
+        <div className="pt-1 mt-1 border-t border-black flex justify-between items-center text-[10px] font-mono text-slate-800">
           <span>K.A.S. TIER 0</span>
           <span>CC BY-SA 4.0</span>
         </div>
@@ -257,112 +260,272 @@ export const Card: React.FC<CardProps> = ({
   }
 
   // =========================================================================
-  // CARD FRONT RENDERING - FULL SATURATION TACTILE TABLETOP CARD
+  // 3. CARD FRONT RENDERING - PRINT MODE (Static Physical Layout)
+  // =========================================================================
+  if (size === 'print') {
+    const hasArtImage = Boolean(card.artAsset && !imageError);
+    return (
+      <div 
+        style={{ borderColor: deck.borderColor }}
+        className={`relative ${sizeClasses} rounded-xl border-2 bg-slate-950 p-2 flex flex-col justify-between text-slate-100 font-sans overflow-hidden ${className}`}
+      >
+        {/* Header */}
+        <div className="border-b border-white/20 pb-1">
+          <div className="flex justify-between items-center text-[9px] font-mono uppercase tracking-wider mb-0.5">
+            <span className={`px-1.5 py-0.2 rounded font-bold ${deck.badgeBg} ${deck.badgeText}`}>
+              {deck.shortName}
+            </span>
+            <span className="font-mono text-amber-300 font-bold">
+              {card.id}
+            </span>
+          </div>
+          <h3 className="font-display font-bold text-[11px] leading-tight text-white line-clamp-1">
+            {card.title}
+          </h3>
+          {card.attackId && (
+            <div className="text-[9px] font-mono text-amber-300">
+              MITRE {card.attackId}
+            </div>
+          )}
+        </div>
+
+        {/* Artwork (~48% of card) */}
+        <div className="relative h-[115px] w-full rounded-lg border border-white/15 bg-slate-900 overflow-hidden flex items-center justify-center my-1 shadow-inner">
+          {hasArtImage ? (
+            <img 
+              src={card.artAsset} 
+              alt={card.title}
+              onError={() => setImageError(true)}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <CardIcon iconName={card.iconName} className="w-10 h-10 text-amber-400" />
+          )}
+        </div>
+
+        {/* Mechanics Box */}
+        <div className="flex-1 flex flex-col justify-between rounded-lg border border-white/10 bg-slate-900/90 p-1.5 text-[9px]">
+          <p className="font-mono text-slate-200 leading-tight line-clamp-3">
+            {card.description}
+          </p>
+
+          {card.checks && card.checks.length > 0 && (
+            <div className="mt-1 pt-1 border-t border-white/10 space-y-0.5">
+              {card.checks.map((chk, idx) => (
+                <div key={idx} className="flex items-center gap-1 font-mono text-[9px]">
+                  <span className="bg-sky-500 text-slate-950 font-bold px-1 rounded">
+                    {chk.target}+
+                  </span>
+                  <span className="text-sky-200 truncate">{chk.description}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {card.injectEffect && (
+            <div className="mt-1 pt-1 border-t border-emerald-500/30 font-mono text-[9px] text-emerald-300 font-semibold truncate">
+              EFFECT: {card.injectEffect}
+            </div>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div className="pt-1 border-t border-white/10 flex justify-between items-center text-[8px] font-mono text-slate-400">
+          <span>K.A.S. // BHIS CC BY-SA 4.0</span>
+          <span>{card.nistPhase || 'KRUSTY KRAB SOC'}</span>
+        </div>
+      </div>
+    );
+  }
+
+  // =========================================================================
+  // 4. CARD FRONT RENDERING - ART-FORWARD INTERACTIVE TABLETOP CARD
   // =========================================================================
   const hasArtImage = Boolean(card.artAsset && !imageError);
+  const primaryCheck = card.checks?.[0];
 
   return (
     <div 
       onClick={onClick}
       style={{ borderColor: deck.borderColor }}
-      className={`relative ${sizeClasses} rounded-2xl border-2 bg-gradient-to-b ${deck.bgGradient} p-3 flex flex-col justify-between text-slate-100 font-sans shadow-xl shadow-black/80 overflow-hidden ${className} ${selected ? 'ring-4 ring-amber-400 scale-[1.02]' : ''} ${interactive ? 'cursor-pointer hover:scale-[1.02] hover:shadow-2xl hover:-translate-y-1 transition-all duration-200' : ''}`}
+      className={`group relative ${sizeClasses} rounded-2xl border-2 bg-gradient-to-b ${deck.bgGradient} p-2.5 flex flex-col justify-between text-slate-100 font-sans shadow-xl shadow-black/80 overflow-hidden ${className} ${selected ? 'ring-4 ring-amber-400 scale-[1.02]' : ''} ${interactive ? 'cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition-all duration-200' : ''}`}
     >
-      {/* Subtle Inner Card Border */}
-      <div className="absolute inset-1.5 border border-white/10 rounded-xl pointer-events-none" />
+      {/* Brass Inner Filigree Border */}
+      <div className="absolute inset-1.5 border border-amber-400/20 rounded-xl pointer-events-none z-10" />
 
-      {/* Header Bar */}
-      <div className="z-10 border-b border-white/15 pb-1.5 mb-1">
+      {/* Clean Top Header Bar */}
+      <div className="z-10 border-b border-white/15 pb-1.5 mb-1 shrink-0">
         <div className="flex justify-between items-center text-xs font-mono uppercase tracking-wider mb-1">
-          <span className={`px-2 py-0.5 rounded font-bold shadow-sm ${deck.badgeBg} ${deck.badgeText}`}>
+          <span className={`px-2 py-0.5 rounded font-bold shadow-sm text-[11px] ${deck.badgeBg} ${deck.badgeText}`}>
             {deck.shortName}
           </span>
-          <span className="font-mono text-amber-300 font-bold bg-slate-950/70 px-1.5 py-0.5 rounded border border-white/10">
+          <span className="font-mono text-amber-300 font-bold bg-slate-950/80 px-2 py-0.5 rounded border border-amber-500/30 text-[11px] shadow-sm">
             {card.id}
           </span>
         </div>
-        <h3 className="font-display font-bold text-sm sm:text-base leading-tight text-white line-clamp-2">
+        <h3 className="font-display font-bold text-xs sm:text-sm leading-tight text-white line-clamp-1 group-hover:text-amber-300 transition-colors">
           {card.title}
         </h3>
-        {card.attackId && (
-          <div className="flex items-center gap-1 font-mono text-xs text-amber-300/90 mt-1">
-            <span className="bg-slate-950/80 px-1.5 py-0.5 rounded border border-white/10 font-semibold">
-              MITRE {card.attackId}
-            </span>
-          </div>
-        )}
       </div>
 
-      {/* Procedural Art Box / Image Hydration Container */}
-      <div className="relative h-24 w-full rounded-xl border border-white/15 bg-slate-950/80 overflow-hidden flex items-center justify-center my-1 shadow-inner z-10">
+      {/* Prominent Illustration Container (~55-60% Card Height) */}
+      <div className="relative flex-1 w-full rounded-xl border border-amber-500/25 bg-slate-950/90 overflow-hidden flex items-center justify-center my-0.5 shadow-inner z-0">
         {hasArtImage ? (
           <img 
             src={card.artAsset} 
             alt={card.title}
             onError={() => setImageError(true)}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="flex flex-col items-center justify-center relative w-full h-full">
-            <div className="p-2.5 rounded-full bg-slate-900 border border-white/15 shadow-md">
-              <CardIcon iconName={card.iconName} className="w-9 h-9 text-amber-400" />
+          <div className="flex flex-col items-center justify-center relative w-full h-full p-3 bg-gradient-to-b from-slate-900 to-slate-950">
+            <div className="p-3 rounded-full bg-slate-950 border border-amber-500/40 shadow-lg shadow-black/80">
+              <CardIcon iconName={card.iconName} className="w-10 h-10 text-amber-400" />
             </div>
             {card.nistPhase && (
-              <span className="absolute top-1.5 left-2 text-xs font-mono text-cyan-300 uppercase font-semibold">
+              <span className="mt-2 text-[10px] font-mono text-cyan-300 uppercase font-semibold">
                 {card.nistPhase}
               </span>
             )}
-            <span className="absolute bottom-1.5 right-2 text-xs font-mono text-slate-500">
-              IR PHASE
+            <span className="text-[9px] font-mono text-slate-500 uppercase tracking-wider">
+              KRUSTY KRAB INCIDENT ASSET
             </span>
+          </div>
+        )}
+
+        {/* Resting Artwork Overlay Badge (Top-Right or Bottom-Right subtle pill) */}
+        {card.attackId && (
+          <div className="absolute top-2 right-2 bg-slate-950/85 backdrop-blur-xs border border-amber-500/40 px-2 py-0.5 rounded text-[10px] font-mono text-amber-300 font-semibold shadow-md">
+            MITRE {card.attackId}
           </div>
         )}
       </div>
 
-      {/* Mechanics & Description Box */}
-      <div className="z-10 flex-1 flex flex-col justify-between text-xs leading-relaxed rounded-xl border border-white/10 bg-slate-950/80 p-2.5 backdrop-blur-xs shadow-inner">
-        <p className="font-mono text-slate-200 text-xs leading-relaxed line-clamp-4">
-          {card.description}
-        </p>
-
-        {/* Checks for Procedures */}
-        {card.checks && card.checks.length > 0 && (
-          <div className="mt-1.5 pt-1.5 border-t border-white/10 space-y-1">
-            {card.checks.map((chk, idx) => (
-              <div key={idx} className="flex items-center gap-1.5 font-mono text-xs">
-                <span className="bg-cyan-500 text-slate-950 font-bold px-1.5 py-0.5 rounded shadow-xs text-xs">
-                  {chk.target}+
-                </span>
-                <span className="text-cyan-200 truncate">{chk.description}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Inject Effect Badge */}
-        {card.injectEffect && (
-          <div className="mt-1.5 pt-1.5 border-t border-emerald-500/30 font-mono text-xs text-emerald-300 font-semibold flex items-start gap-1.5">
-            <span className="bg-emerald-500 text-slate-950 px-1.5 py-0.5 rounded text-xs font-bold shrink-0">
-              EFFECT
+      {/* Resting Lower Plaque: Visible when drawer is closed */}
+      <div className="z-10 pt-1.5 shrink-0 flex items-center justify-between text-xs font-mono">
+        <div className="flex items-center gap-1.5 truncate pr-1">
+          {primaryCheck ? (
+            <span className="bg-sky-500/20 text-sky-300 border border-sky-500/40 px-2 py-0.5 rounded-full font-bold text-[10px] flex items-center gap-1">
+              <Target className="w-3 h-3 text-sky-400" />
+              DC {primaryCheck.target}+ {card.checks && card.checks.length > 1 ? `(${card.checks.length} Checks)` : 'Check'}
             </span>
-            <span className="line-clamp-2 text-xs leading-snug">{card.injectEffect}</span>
-          </div>
-        )}
+          ) : card.injectEffect ? (
+            <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded-full font-bold text-[10px] flex items-center gap-1">
+              <AlertTriangle className="w-3 h-3 text-emerald-400" />
+              INJECT EFFECT
+            </span>
+          ) : card.subtitle ? (
+            <span className="text-amber-200/80 text-[10px] font-medium truncate">
+              {card.subtitle}
+            </span>
+          ) : (
+            <span className="text-slate-400 text-[10px]">
+              {card.nistPhase || 'Incident Vector'}
+            </span>
+          )}
+        </div>
 
-        {/* Flavor Lore Text */}
-        {card.flavorText && !card.checks && !card.injectEffect && (
-          <div className="mt-1 pt-1 border-t border-white/10 font-serif italic text-amber-200/80 text-xs line-clamp-2">
-            {card.flavorText}
-          </div>
-        )}
+        {/* Subtle Accessible Expand Toggle Button */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsExpanded(prev => !prev);
+          }}
+          aria-expanded={isExpanded}
+          aria-label="Toggle card details drawer"
+          className="p-1 rounded-lg bg-slate-950/80 hover:bg-amber-500/20 text-amber-400 hover:text-amber-300 border border-amber-500/30 transition-all flex items-center gap-0.5 text-[10px] shadow-sm shrink-0"
+        >
+          <span className="sr-only">Details</span>
+          {isExpanded ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronUp className="w-3.5 h-3.5" />}
+        </button>
       </div>
 
-      {/* Card Footer Bar */}
-      <div className="z-10 pt-1.5 mt-1 border-t border-white/15 flex justify-between items-center text-xs font-mono text-slate-400">
-        <span className="flex items-center gap-1">
-          <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
-          K.A.S. TIER 0
-        </span>
-        <span>BHIS CC BY-SA 4.0</span>
+      {/* Hover/Focus Details Drawer: Smooth slide-up frosted glass drawer */}
+      <div 
+        className={`absolute inset-x-0 bottom-0 z-20 bg-slate-950/95 backdrop-blur-md border-t-2 border-amber-500/50 rounded-b-2xl p-3 text-slate-100 shadow-2xl transition-transform duration-300 ease-out flex flex-col justify-between ${
+          isExpanded ? 'translate-y-0' : 'translate-y-full group-hover:translate-y-0 group-focus-within:translate-y-0'
+        }`}
+        style={{ maxHeight: '85%' }}
+      >
+        {/* Drawer Drag/Header Handle */}
+        <div className="flex items-center justify-between border-b border-white/15 pb-1.5 mb-1.5">
+          <div className="truncate pr-1">
+            <span className="text-amber-300 font-display font-bold text-xs truncate block">
+              {card.title}
+            </span>
+            <span className="text-slate-400 font-mono text-[10px]">
+              {card.subtitle || (card.attackId ? `MITRE ${card.attackId}` : deck.name)}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsExpanded(false);
+            }}
+            className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            aria-label="Collapse drawer"
+          >
+            <ChevronDown className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        {/* Scrollable Content inside Drawer */}
+        <div className="overflow-y-auto space-y-2 pr-1 text-xs">
+          {/* Incident Mechanics */}
+          <div>
+            <h4 className="font-mono text-[10px] uppercase tracking-wider text-amber-400 font-bold mb-0.5">
+              Incident Mechanics:
+            </h4>
+            <p className="font-mono text-slate-200 text-[11px] leading-relaxed">
+              {card.description}
+            </p>
+          </div>
+
+          {/* Defensive Checks Matrix */}
+          {card.checks && card.checks.length > 0 && (
+            <div className="pt-1.5 border-t border-white/10 space-y-1">
+              <h5 className="font-mono text-[10px] uppercase tracking-wider text-sky-300 font-bold">
+                Procedure Rolls (d20):
+              </h5>
+              {card.checks.map((chk, idx) => (
+                <div key={idx} className="flex items-center gap-1.5 font-mono text-[10px]">
+                  <span className="bg-sky-500 text-slate-950 font-bold px-1.5 py-0.2 rounded shadow-xs shrink-0">
+                    DC {chk.target}+
+                  </span>
+                  <span className="text-sky-200 truncate">{chk.description}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Operational Inject Effect */}
+          {card.injectEffect && (
+            <div className="pt-1.5 border-t border-emerald-500/30">
+              <h5 className="font-mono text-[10px] uppercase tracking-wider text-emerald-300 font-bold mb-0.5 flex items-center gap-1">
+                <AlertTriangle className="w-3 h-3 text-emerald-400" />
+                Operational Inject Effect:
+              </h5>
+              <p className="font-mono text-emerald-200 text-[11px] leading-snug font-medium">
+                {card.injectEffect}
+              </p>
+            </div>
+          )}
+
+          {/* Undersea Satirical Lore */}
+          {card.flavorText && (
+            <div className="pt-1 border-t border-white/10 font-serif italic text-amber-200/90 text-[10px] leading-snug border-l-2 border-amber-500/50 pl-2">
+              &ldquo;{card.flavorText}&rdquo;
+            </div>
+          )}
+        </div>
+
+        {/* Drawer Footer */}
+        <div className="pt-1.5 mt-1 border-t border-white/10 flex justify-between items-center text-[9px] font-mono text-slate-400">
+          <span className="text-amber-400 font-bold">K.A.S. TIER 0</span>
+          <span>BHIS CC BY-SA 4.0</span>
+        </div>
       </div>
     </div>
   );

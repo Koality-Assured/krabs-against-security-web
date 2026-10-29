@@ -6,15 +6,15 @@ import { TabletopBoard } from './components/TabletopBoard';
 import { PrintStudio } from './components/PrintStudio';
 import { CardCatalog } from './components/CardCatalog';
 import { RulesView } from './components/RulesModal';
-import { Anchor, Compass } from 'lucide-react';
+import { Anchor, Compass, Shield } from 'lucide-react';
 
 export const App: React.FC = () => {
   const [currentTab, setCurrentTab] = useState<NavTab>('tabletop');
   const allCards: CardData[] = cardsData as CardData[];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-amber-500 selection:text-slate-950">
-      {/* Modern High-Contrast Navbar */}
+    <div className="min-h-screen text-slate-100 flex flex-col font-sans selection:bg-amber-500 selection:text-slate-950 wood-plank-bg">
+      {/* Modern High-Contrast Nautical Navbar */}
       <Navbar currentTab={currentTab} onSelectTab={setCurrentTab} />
 
       {/* Main Tabletop Canvas */}
@@ -36,19 +36,19 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      {/* Clean Modern Footer */}
-      <footer className="bg-slate-950/80 border-t border-slate-800/80 py-6 text-xs text-slate-400">
+      {/* Krusty Galley Brass Footer */}
+      <footer className="bg-galley-950/90 border-t border-amber-900/40 py-6 text-xs text-amber-200/70 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <div className="w-6 h-6 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-400 shadow-sm">
+            <div className="w-6 h-6 rounded-lg bg-amber-950/60 border border-amber-600/40 flex items-center justify-center text-amber-400 shadow-sm">
               <Anchor className="w-3.5 h-3.5" />
             </div>
             <span>
-              <strong className="text-slate-200 font-display tracking-wide">KRABS AGAINST SECURITY</strong> &bull; Incident Response Tabletop Simulation
+              <strong className="text-amber-100 font-display tracking-wide">KRABS AGAINST SECURITY</strong> &bull; Incident Response Tabletop Simulation
             </span>
           </div>
 
-          <div className="flex items-center gap-3 sm:gap-4 text-xs text-slate-400 flex-wrap justify-center">
+          <div className="flex items-center gap-3 sm:gap-4 text-xs text-amber-200/70 flex-wrap justify-center">
             <span>Based on <em>Backdoors &amp; Breaches</em> by BHIS (CC BY-SA 4.0)</span>
             <span>&bull;</span>
             <a 
@@ -61,7 +61,10 @@ export const App: React.FC = () => {
               krabs.ketron.dev
             </a>
             <span>&bull;</span>
-            <span className="text-slate-500 font-mono">Tier 0 Procedural Engine</span>
+            <span className="text-amber-300/60 font-mono flex items-center gap-1">
+              <Shield className="w-3 h-3 text-amber-500" />
+              Krusty Krab SOC
+            </span>
           </div>
         </div>
       </footer>

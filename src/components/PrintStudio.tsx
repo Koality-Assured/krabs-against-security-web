@@ -168,17 +168,17 @@ export const PrintStudio: React.FC<PrintStudioProps> = ({ cards }) => {
   return (
     <div className="space-y-6">
       {/* Studio Banner */}
-      <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-5 shadow-2xl backdrop-blur-sm flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-galley-950/85 border border-amber-900/40 rounded-3xl p-5 shadow-2xl backdrop-blur-sm flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-amber-400 shadow-sm">
               <Printer className="w-5 h-5" />
             </div>
-            <h2 className="font-display font-black text-lg sm:text-xl text-slate-100 uppercase tracking-wider">
+            <h2 className="font-display font-black text-lg sm:text-xl text-amber-100 uppercase tracking-wider">
               Print &amp; Play Studio
             </h2>
           </div>
-          <p className="text-xs font-mono text-slate-400 mt-1">
+          <p className="text-xs font-mono text-amber-200/70 mt-1">
             Millimeter-Calibrated 300 DPI Vector PDF Generator &bull; Duplex Alignment Engine
           </p>
         </div>
@@ -207,7 +207,7 @@ export const PrintStudio: React.FC<PrintStudioProps> = ({ cards }) => {
       {/* Configuration Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* 1. Paper & Layout */}
-        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 shadow-xl">
+        <div className="bg-galley-950/85 border border-amber-900/40 rounded-2xl p-4 shadow-xl">
           <span className="block font-mono text-xs uppercase tracking-wider text-slate-400 font-bold mb-2">
             1. Paper &amp; Layout
           </span>
@@ -267,7 +267,7 @@ export const PrintStudio: React.FC<PrintStudioProps> = ({ cards }) => {
         </div>
 
         {/* 2. Duplex & Mirroring */}
-        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 shadow-xl">
+        <div className="bg-galley-950/85 border border-amber-900/40 rounded-2xl p-4 shadow-xl">
           <span className="block font-mono text-xs uppercase tracking-wider text-slate-400 font-bold mb-2">
             2. Duplex Alignment
           </span>
@@ -301,7 +301,7 @@ export const PrintStudio: React.FC<PrintStudioProps> = ({ cards }) => {
         </div>
 
         {/* 3. Ink Saver / Eco-Print Mode */}
-        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 shadow-xl">
+        <div className="bg-galley-950/85 border border-amber-900/40 rounded-2xl p-4 shadow-xl">
           <div className="flex items-center justify-between mb-2">
             <span className="font-mono text-xs uppercase tracking-wider text-slate-400 font-bold">
               3. Toner / Ink Economy
@@ -327,7 +327,7 @@ export const PrintStudio: React.FC<PrintStudioProps> = ({ cards }) => {
         </div>
 
         {/* 4. Deck Selection */}
-        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 shadow-xl">
+        <div className="bg-galley-950/85 border border-amber-900/40 rounded-2xl p-4 shadow-xl">
           <div className="flex justify-between items-center mb-2">
             <span className="font-mono text-xs uppercase tracking-wider text-slate-400 font-bold">
               4. Decks ({activeCards.length} Cards)
@@ -361,7 +361,7 @@ export const PrintStudio: React.FC<PrintStudioProps> = ({ cards }) => {
       </div>
 
       {/* Sheet Preview Arena */}
-      <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-5 shadow-2xl backdrop-blur-sm">
+      <div className="bg-galley-950/85 border border-amber-900/40 rounded-3xl p-5 shadow-2xl backdrop-blur-sm">
         {/* Sheet Navigator Header */}
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-3 mb-4">
           <div className="flex items-center gap-3">
