@@ -116,9 +116,6 @@ export const DiceRoller: React.FC<DiceRollerProps> = ({
 
   return (
     <div className={`relative rounded-3xl p-5 bg-galley-950/85 border border-amber-900/40 shadow-2xl backdrop-blur-md ${className}`}>
-      {/* Brass Corner Rivets */}
-      <div className="absolute top-2.5 left-2.5 brass-rivet pointer-events-none" />
-      <div className="absolute top-2.5 right-2.5 brass-rivet pointer-events-none" />
 
       {/* Tray Header Bar */}
       <div className="flex justify-between items-center border-b border-amber-900/40 pb-3 mb-3.5">

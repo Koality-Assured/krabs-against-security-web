@@ -282,9 +282,6 @@ export const CardCatalog: React.FC<CardCatalogProps> = ({ cards }) => {
                 }}
                 className="group relative rounded-2xl border-2 border-amber-900/40 hover:border-amber-500/80 bg-slate-950/90 overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col"
               >
-                {/* Brass Corner Rivet Accents */}
-                <div className="absolute top-2 left-2 z-20 w-2 h-2 rounded-full bg-amber-400/60 border border-amber-600/80 shadow-xs" />
-                <div className="absolute top-2 right-2 z-20 w-2 h-2 rounded-full bg-amber-400/60 border border-amber-600/80 shadow-xs" />
 
                 {/* 4:3 Art Container */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950 flex items-center justify-center">
