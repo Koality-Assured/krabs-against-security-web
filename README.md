@@ -10,7 +10,7 @@
 
 **Web-Native Cybersecurity Incident Response Card Game & Print-and-Play Studio**
 
-[![CI](https://github.com/Koality-Assured/krabs-against-security-web/actions/workflows/deploy.yml/badge.svg)](https://github.com/Koality-Assured/krabs-against-security-web/actions/workflows/deploy.yml)
+[![CI](https://github.com/Koality-Assured/krabs-against-security-web/actions/workflows/ci.yml/badge.svg)](https://github.com/Koality-Assured/krabs-against-security-web/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Node.js 20+](https://img.shields.io/badge/node-20+-green.svg)](https://nodejs.org/)
 [![TypeScript 5.x](https://img.shields.io/badge/typescript-5.x-blue.svg)](https://www.typescriptlang.org/)
